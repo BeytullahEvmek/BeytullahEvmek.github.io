@@ -1,5 +1,5 @@
-let language = "en";
-let musicPlaying = true;
+let language = "en"; // start in English
+let musicPlaying = false;
 
 // Show a section
 function showSection(id) {
@@ -30,9 +30,9 @@ function toggleLanguage() {
 
 // Apply initial language on page load **without toggling**
 window.addEventListener("DOMContentLoaded", () => {
-  // Show English, hide Turkish
   document.querySelectorAll(".lang-en").forEach(el => el.style.display = "");
   document.querySelectorAll(".lang-tr").forEach(el => el.style.display = "none");
+  document.getElementById("occupation").innerText = "Computer Engineer (EN)";
 });
 
 /* 🌙 Dark mode */
