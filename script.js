@@ -11,29 +11,30 @@ function showSection(id) {
 }
 
 function updateLanguage() {
-  document.getElementById("occupation").innerText =
+  document.getElementById("occupation").textContent =
     language === "en"
       ? "Computer Engineer (EN)"
       : "Bilgisayar Mühendisi (TR)";
 
   document.querySelectorAll(".lang-en").forEach(el => {
-    el.style.display = language === "en" ? "" : "none";
+    el.hidden = language !== "en";
   });
 
   document.querySelectorAll(".lang-tr").forEach(el => {
-    el.style.display = language === "tr" ? "" : "none";
+    el.hidden = language !== "tr";
   });
-}
-
-function toggleLanguage() {
-  language = language === "en" ? "tr" : "en";
-  updateLanguage();
 }
 
 window.addEventListener("DOMContentLoaded", () => {
   updateLanguage();
   showSection("about");
 });
+
+
+function toggleLanguage() {
+  language = language === "en" ? "tr" : "en";
+  updateLanguage();
+}
 
 /* Dark mode */
 function toggleDarkMode(el) {
