@@ -129,20 +129,21 @@ main {
 .section {
   display: none;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(12px);
 }
 
 .section.active {
   display: block;
-  animation: fadeIn 0.35s ease forwards;
+  animation: sectionFade 0.35s ease forwards;
 }
 
-@keyframes fadeIn {
+@keyframes sectionFade {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 
 
 /* Responsive: stack vertically, center text on small screens */
