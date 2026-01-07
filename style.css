@@ -204,7 +204,47 @@ main {
     text-align: center;
   }
 }
+/*it might be removed*/
+/* ===== General section styling ===== */
+.section {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  padding: 40px;       /* padding around content */
+  box-sizing: border-box;
+}
 
+.section.active {
+  display: block;
+  animation: fadeSlide 0.4s ease forwards;
+}
+
+.section .section-container {
+  display: flex;
+  flex-direction: row;       /* text left, optional image right if needed */
+  align-items: flex-start;
+  gap: 30px;
+  max-width: 1200px;         /* optional max width */
+  margin: 0 auto;
+}
+
+.section .section-text {
+  flex: 1;                   /* text takes full width */
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Responsive: stack vertically on smaller screens */
+@media (max-width: 768px) {
+  .section .section-container {
+    flex-direction: column;
+  }
+
+  .section .section-text {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 
 /* Add at the end of style.css */
