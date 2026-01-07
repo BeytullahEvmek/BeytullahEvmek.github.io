@@ -127,60 +127,121 @@ main {
 }
 
 /* Section animation */
-/* SECTION STYLES */
-/* All sections hidden by default */
 .section {
   display: none;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.4s, transform 0.4s;
 }
 
-/* Active section shows */
 .section.active {
-  display: block; /* block works better than flex here */
+  display: block;
   animation: fadeSlide 0.4s ease forwards;
 }
 
-/* About section layout */
-#about {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 30px;
-  padding: 40px;
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.about-pic {
+/* Make About section fill viewport */
+#about {
+  display: flex;
+  height: 100vh;           /* full viewport height */
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.about-container {
+  display: flex;
   flex: 1;
+  flex-direction: row;     /* image left, text right */
+  align-items: center;     /* vertically center content */
+  gap: 30px;
+  width: 100%;
+}
+
+/* Profile picture */
+.about-pic {
+  flex: 1;                 /* left side */
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;            /* fill container height */
 }
 
 .about-pic img {
-  max-height: 70vh; /* prevent huge image */
-  width: auto;
-  border-radius: 10px;
+  height: 100%;            /* fill height */
+  width: auto;             /* maintain aspect ratio */
+  max-width: 100%;         /* don’t overflow horizontally */
+  border-radius: 10px;     /* optional */
+  object-fit: cover;       /* crop if necessary */
 }
 
+/* Text on the right */
 .about-text {
-  flex: 2;
-  font-size: 1.2rem;
-  line-height: 1.5;
+  flex: 2;                 /* take remaining space */
+  font-size: 1.3rem;
+  line-height: 1.6;
+  overflow-y: auto;        /* scroll if content too long */
 }
 
-/* Responsive */
+/* Responsive: stack on mobile */
 @media (max-width: 768px) {
-  #about {
+  #about, .about-container {
     flex-direction: column;
-    align-items: center;
+    height: auto;
   }
 
   .about-pic img {
-    max-height: 50vh;
+    height: auto;
+    max-width: 80%;
   }
 
   .about-text {
+    width: 100%;
+    text-align: center;
+  }
+}
+/*it might be removed*/
+/* ===== General section styling ===== */
+.section {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  min-height: 70vh;  /* ensures section is visible */
+}
+
+
+.section.active {
+  display: block;
+  animation: fadeSlide 0.4s ease forwards;
+}
+
+.section .section-container {
+  display: flex;
+  flex-direction: row;       /* text left, optional image right if needed */
+  align-items: flex-start;
+  gap: 30px;
+  max-width: 1200px;         /* optional max width */
+  margin: 0 auto;
+}
+
+.section .section-text {
+  flex: 1;                   /* text takes full width */
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Responsive: stack vertically on smaller screens */
+@media (max-width: 768px) {
+  .section .section-container {
+    flex-direction: column;
+  }
+
+  .section .section-text {
+    width: 100%;
     text-align: center;
   }
 }
@@ -190,5 +251,3 @@ main {
 .lang-tr {
   display: none;
 }
-
-
