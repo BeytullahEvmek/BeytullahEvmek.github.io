@@ -41,7 +41,7 @@ function toggleDarkMode(el) {
   el.classList.toggle("active");
 
   const icon = el.parentElement.querySelector(".toggle-icon");
-  icon.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  icon.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
 }
 
 /* 🎵 Music toggle */
