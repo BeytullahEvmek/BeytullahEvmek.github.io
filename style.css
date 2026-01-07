@@ -285,16 +285,20 @@ main {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   justify-content: center;
   gap: 25px;
   margin-top: 40px;
+  max-width: 1200px; /* Optional: prevents grid from stretching too much */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Square card */
 .skill-item {
   position: relative;
-  aspect-ratio: 1 / 1;
+  width: 150px;   /* fixed square size */
+  height: 150px;  /* fixed square size */
   background: var(--card);
   border-radius: 14px;
   display: flex;
