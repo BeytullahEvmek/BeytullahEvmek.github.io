@@ -1,9 +1,6 @@
 let language = "en";
 let musicPlaying = false;
-/* Hide Turkish content by default */
-.lang-tr {
-  display: none;
-}
+
 
 function showSection(id) {
   document.querySelectorAll(".section").forEach(section => {
