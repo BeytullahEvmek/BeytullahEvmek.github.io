@@ -169,12 +169,12 @@ main {
 
 
 /* Make About section fill viewport */
-#about.section.active {
-  display: flex;
-  height: 100vh;
+#about {
+  min-height: 100vh;
   padding: 0 40px;
   box-sizing: border-box;
 }
+
 
 
 .about-container {
