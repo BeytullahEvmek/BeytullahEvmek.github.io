@@ -71,7 +71,6 @@ header {
   user-select: none;
 }
 
-
 /* Knob */
 .pill-knob {
   width: 30px;
@@ -104,8 +103,6 @@ header {
   opacity: 1;
 }
 
-
-
 /* NAV */
 nav {
   background: var(--nav);
@@ -131,6 +128,9 @@ main {
   display: none;
   opacity: 0;
   transform: translateY(10px);
+  min-height: 50vh;  /* ensures section is visible */
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
 .section.active {
@@ -148,7 +148,7 @@ main {
 /* Make About section fill viewport */
 #about {
   display: flex;
-  height: 100vh;           /* full viewport height */
+  height: 100vh;
   padding: 0 40px;
   box-sizing: border-box;
 }
@@ -156,38 +156,38 @@ main {
 .about-container {
   display: flex;
   flex: 1;
-  flex-direction: row;     /* image left, text right */
-  align-items: center;     /* vertically center content */
+  flex-direction: row;
+  align-items: center;
   gap: 30px;
   width: 100%;
 }
 
 /* Profile picture */
 .about-pic {
-  flex: 1;                 /* left side */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;            /* fill container height */
+  height: 100%;
 }
 
 .about-pic img {
-  height: 100%;            /* fill height */
-  width: auto;             /* maintain aspect ratio */
-  max-width: 100%;         /* don’t overflow horizontally */
-  border-radius: 10px;     /* optional */
-  object-fit: cover;       /* crop if necessary */
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 /* Text on the right */
 .about-text {
-  flex: 2;                 /* take remaining space */
+  flex: 2;
   font-size: 1.3rem;
   line-height: 1.6;
-  overflow-y: auto;        /* scroll if content too long */
+  overflow-y: auto;
 }
 
-/* Responsive: stack on mobile */
+/* Responsive About */
 @media (max-width: 768px) {
   #about, .about-container {
     flex-direction: column;
@@ -204,50 +204,53 @@ main {
     text-align: center;
   }
 }
-/*it might be removed*/
-/* ===== General section styling ===== */
-.section {
-  display: none;
-  opacity: 0;
-  transform: translateY(10px);
-  min-height: 70vh;  /* ensures section is visible */
-}
 
-
-.section.active {
-  display: block;
-  animation: fadeSlide 0.4s ease forwards;
-}
-
+/* ===== Generic sections ===== */
 .section .section-container {
   display: flex;
-  flex-direction: row;       /* text left, optional image right if needed */
+  flex-direction: column;   /* stack text vertically */
   align-items: flex-start;
-  gap: 30px;
-  max-width: 1200px;         /* optional max width */
+  gap: 20px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .section .section-text {
-  flex: 1;                   /* text takes full width */
   font-size: 1.2rem;
   line-height: 1.6;
 }
 
-/* Responsive: stack vertically on smaller screens */
+/* Contact icons */
+.contact-icons {
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.contact-icons img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Responsive generic sections */
 @media (max-width: 768px) {
   .section .section-container {
     flex-direction: column;
+    align-items: center;
   }
 
   .section .section-text {
-    width: 100%;
     text-align: center;
+  }
+
+  .contact-icons {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
-
-/* Add at the end of style.css */
+/* Language toggle */
 .lang-tr {
   display: none;
 }
