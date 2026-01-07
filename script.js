@@ -1,18 +1,15 @@
-let language = "en"; // Start site in English
+let language = "en";
 let musicPlaying = false;
 
-// Show a section
 function showSection(id) {
   document.querySelectorAll(".section").forEach(sec => {
     sec.classList.remove("active");
   });
 
-  document.getElementById(id).classList.add("active");
+  const target = document.getElementById(id);
+  if (target) target.classList.add("active");
 }
 
-
-
-// Update all texts based on current language
 function updateLanguage() {
   document.getElementById("occupation").innerText =
     language === "en"
@@ -28,19 +25,17 @@ function updateLanguage() {
   });
 }
 
-
-// Toggle language on header click
 function toggleLanguage() {
   language = language === "en" ? "tr" : "en";
   updateLanguage();
 }
 
-// Apply initial language after DOM loads
 window.addEventListener("DOMContentLoaded", () => {
   updateLanguage();
+  showSection("about");
 });
 
-/* 🌙 Dark mode */
+/* Dark mode */
 function toggleDarkMode(el) {
   document.body.classList.toggle("dark");
   el.classList.toggle("active");
@@ -49,7 +44,7 @@ function toggleDarkMode(el) {
   icon.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
 }
 
-/* 🎵 Music toggle */
+/* Music */
 const music = document.getElementById("bg-music");
 
 function toggleMusic(el) {
