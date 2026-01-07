@@ -98,6 +98,9 @@ header {
 .pill-toggle.blue.active {
   background: #4aa3d0;
 }
+.toggle-group:hover .toggle-icon {
+  opacity: 1;
+}
 
 
 
