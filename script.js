@@ -30,7 +30,9 @@ function toggleLanguage() {
 
 
 // Apply initial language on page load
-toggleLanguage();
+window.addEventListener("DOMContentLoaded", () => {
+  toggleLanguage();
+});
 
 /* 🌙 Dark mode */
 function toggleDarkMode(el) {
