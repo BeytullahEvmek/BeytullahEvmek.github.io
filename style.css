@@ -266,8 +266,3 @@ main {
   min-height: 70vh;
   box-sizing: border-box;
 }
-
-/* Language toggle */
-.lang-tr {
-  display: none;
-}
