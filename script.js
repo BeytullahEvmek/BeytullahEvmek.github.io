@@ -87,7 +87,7 @@ function renderSkills() {
     item.className = "skill-item";
 
     item.innerHTML = `
-      <img src="images/${skill.img}" alt="${skill.en}">
+      <img src="resources/${skill.img}" alt="${skill.en}">
       <div class="skill-overlay">
         ${language === "en" ? skill.en : skill.tr}
       </div>
