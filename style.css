@@ -30,6 +30,9 @@ header {
   transition: background 0.4s;
 }
 
+.header-left {
+  text-align: left;
+}
 
 #occupation {
   cursor: pointer;
