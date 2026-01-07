@@ -1,7 +1,7 @@
 let language = "en";
 let musicPlaying = false;
 
-
+// Show a section
 function showSection(id) {
   document.querySelectorAll(".section").forEach(section => {
     section.classList.remove("active");
@@ -23,21 +23,24 @@ function toggleLanguage() {
   document.querySelectorAll(".lang-en").forEach(el => {
     el.style.display = language === "en" ? "" : "none";
   });
-
   document.querySelectorAll(".lang-tr").forEach(el => {
     el.style.display = language === "tr" ? "" : "none";
   });
 }
 
+// Apply initial language on page load
+toggleLanguage();
 
 /* 🌙 Dark mode */
 function toggleDarkMode(el) {
   document.body.classList.toggle("dark");
   el.classList.toggle("active");
+
+  const icon = el.parentElement.querySelector(".toggle-icon");
+  icon.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
 }
 
 /* 🎵 Music toggle */
-
 const music = document.getElementById("bg-music");
 
 function toggleMusic(el) {
@@ -49,12 +52,4 @@ function toggleMusic(el) {
     music.pause();
     el.classList.remove("active");
   }
-}
-/* button style*/
-function toggleDarkMode(el) {
-  document.body.classList.toggle("dark");
-  el.classList.toggle("active");
-
-  const icon = el.parentElement.querySelector(".toggle-icon");
-  icon.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
 }
