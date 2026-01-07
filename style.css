@@ -232,12 +232,13 @@ main {
 }
 
 .about-pic img {
-  height: 100%;
-  width: auto;
-  max-width: 100%;
+  width: 100%;
+  max-width: 250px; /* limit image width */
+  height: auto;     /* maintain aspect ratio */
   border-radius: 10px;
   object-fit: cover;
 }
+
 
 /* Text on the right */
 .about-text {
@@ -390,3 +391,15 @@ main {
   min-height: 70vh;
   box-sizing: border-box;
 }
+.contact-icons img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin: 0 12px;
+  transition: transform 0.3s ease;
+}
+
+.contact-icons img:hover {
+  transform: scale(1.1);
+}
+
