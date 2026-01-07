@@ -3,11 +3,13 @@ let musicPlaying = false;
 
 // Show a section
 function showSection(id) {
-  document.querySelectorAll(".section").forEach(section => {
-    section.classList.remove("active"); // hide all
+  document.querySelectorAll(".section").forEach(sec => {
+    sec.classList.remove("active");
   });
-  document.getElementById(id).classList.add("active"); // show clicked
+
+  document.getElementById(id).classList.add("active");
 }
+
 
 
 // Update all texts based on current language
