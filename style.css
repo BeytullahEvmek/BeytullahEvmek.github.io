@@ -312,11 +312,14 @@ main {
 
 /* Logo */
 .skill-item img {
-  width: 80%;
-  height: 80%;
+  width: auto;       /* width adjusts automatically */
+  height: 70%;       /* height takes 70% of card */
+  max-width: 90%;    /* never exceed 90% of card width */
+  max-height: 90%;   /* never exceed 90% of card height */
   object-fit: contain;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
 
 /* Hover overlay */
 .skill-overlay {
