@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Name | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <h1 id="name">Your Name</h1>
+
+  <!-- Click = language toggle -->
+  <h2 id="occupation" onclick="toggleLanguage()">
+    Computer Engineer (EN)
+  </h2>
+
+  <!-- Toggles -->
+  <div class="toggles">
+    <button onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    <button onclick="toggleMusic()">🎵 Music</button>
+  </div>
+</header>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <button onclick="showSection('about')">About</button>
+  <button onclick="showSection('projects')">Projects</button>
+  <button onclick="showSection('skills')">Skills</button>
+  <button onclick="showSection('hobbies')">Hobbies</button>
+  <button onclick="showSection('references')">References</button>
+  <button onclick="showSection('certificates')">Certificates</button>
+</nav>
+
+<!-- ===== CONTENT ===== -->
+<main>
+
+  <section id="about" class="section active">
+    <!-- ✏️ EDIT HERE -->
+    <p>About me content.</p>
+  </section>
+
+  <section id="projects" class="section">
+    <!-- ✏️ EDIT HERE -->
+    <p>Projects content.</p>
+  </section>
+
+  <section id="skills" class="section">
+    <!-- ✏️ EDIT HERE -->
+    <p>Skills content.</p>
+  </section>
+
+  <section id="hobbies" class="section">
+    <!-- ✏️ EDIT HERE -->
+    <p>Hobbies content.</p>
+  </section>
+
+  <section id="references" class="section">
+    <!-- ✏️ EDIT HERE -->
+    <p>References content.</p>
+  </section>
+
+  <section id="certificates" class="section">
+    <!-- ✏️ EDIT HERE -->
+    <p>Certificates content.</p>
+  </section>
+
+</main>
+
+<!-- 🎵 Background music (replace file later) -->
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
 
