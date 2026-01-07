@@ -1,5 +1,5 @@
 let language = "en";
-let musicPlaying = false;
+let musicPlaying = true;
 
 // Show a section
 function showSection(id) {
@@ -28,10 +28,11 @@ function toggleLanguage() {
   });
 }
 
-
-// Apply initial language on page load
+// Apply initial language on page load **without toggling**
 window.addEventListener("DOMContentLoaded", () => {
-  toggleLanguage();
+  // Show English, hide Turkish
+  document.querySelectorAll(".lang-en").forEach(el => el.style.display = "");
+  document.querySelectorAll(".lang-tr").forEach(el => el.style.display = "none");
 });
 
 /* 🌙 Dark mode */
