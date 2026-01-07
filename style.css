@@ -20,6 +20,12 @@ body {
   transition: background 0.4s, color 0.4s;
 }
 
+/* Hide Turkish content by default */
+.lang-tr {
+  display: none;
+}
+
+
 /* HEADER */
 header {
   display: flex;
