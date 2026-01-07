@@ -144,4 +144,9 @@ main {
     transform: translateY(0);
   }
 }
+/* Add at the end of style.css */
+.lang-tr {
+  display: none;
+}
+
 
