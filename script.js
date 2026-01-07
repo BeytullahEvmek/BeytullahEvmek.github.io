@@ -21,20 +21,23 @@ function toggleLanguage() {
 }
 
 /* 🌙 Dark mode */
-function toggleDarkMode() {
+function toggleDarkMode(el) {
   document.body.classList.toggle("dark");
+  el.classList.toggle("active");
 }
 
 /* 🎵 Music toggle */
-function toggleMusic() {
-  const music = document.getElementById("bg-music");
 
-  if (!musicPlaying) {
+const music = document.getElementById("bg-music");
+
+function toggleMusic(el) {
+  if (music.paused) {
+    music.volume = 0.2;
     music.play();
+    el.classList.add("active");
   } else {
     music.pause();
+    el.classList.remove("active");
   }
-
-  musicPlaying = !musicPlaying;
 }
 
