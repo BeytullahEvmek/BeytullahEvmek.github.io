@@ -12,13 +12,22 @@ function showSection(id) {
 function toggleLanguage() {
   language = language === "en" ? "tr" : "en";
 
+  // Header occupation
   document.getElementById("occupation").innerText =
     language === "en"
       ? "Computer Engineer (EN)"
       : "Bilgisayar Mühendisi (TR)";
 
-  // Later: switch all section texts here
+  // Toggle all text content
+  document.querySelectorAll(".lang-en").forEach(el => {
+    el.style.display = language === "en" ? "" : "none";
+  });
+
+  document.querySelectorAll(".lang-tr").forEach(el => {
+    el.style.display = language === "tr" ? "" : "none";
+  });
 }
+
 
 /* 🌙 Dark mode */
 function toggleDarkMode(el) {
