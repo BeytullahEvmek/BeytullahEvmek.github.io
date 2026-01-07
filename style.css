@@ -128,19 +128,21 @@ main {
 /* ===== Section container fix ===== */
 .section {
   display: none;
-  min-height: 70vh;
-  padding: 40px;
-  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .section.active {
   display: block;
+  animation: fadeIn 0.35s ease forwards;
 }
 
-[hidden] {
-  display: none !important;
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
 
 
 /* Responsive: stack vertically, center text on small screens */
