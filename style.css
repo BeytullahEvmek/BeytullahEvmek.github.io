@@ -285,7 +285,7 @@ main {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 200px)); /* fixed max width */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* flexible columns */
   justify-content: center;
   gap: 25px;
   margin-top: 40px;
@@ -294,12 +294,11 @@ main {
   margin-right: auto;
 }
 
-
 /* Square card */
 .skill-item {
   position: relative;
-  width: 150px;   /* fixed square size */
-  height: 150px;  /* fixed square size */
+  width: 100%;       /* fills the grid cell */
+  aspect-ratio: 1/1; /* always square */
   background: var(--card);
   border-radius: 14px;
   display: flex;
@@ -317,14 +316,11 @@ main {
 
 /* Logo */
 .skill-item img {
-  width: auto;       /* width adjusts automatically */
-  height: 70%;       /* height takes 70% of card */
-  max-width: 90%;    /* never exceed 90% of card width */
-  max-height: 90%;   /* never exceed 90% of card height */
+  width: 70%;        /* logo fills 70% of card */
+  height: 70%;
   object-fit: contain;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
-
 
 /* Hover overlay */
 .skill-overlay {
@@ -343,7 +339,6 @@ main {
   transition: opacity 0.3s ease;
 }
 
-/* Hover effects */
 .skill-item:hover img {
   transform: scale(1.1);
   opacity: 0.15;
@@ -360,6 +355,7 @@ main {
   font-size: 0.9rem;
   opacity: 0.7;
 }
+
 
 /* Repeat for hobbies, references, certificates, contact */
 #hobbies{
