@@ -2,13 +2,16 @@ let language = "en";
 let musicPlaying = false;
 
 function showSection(id) {
-  document.querySelectorAll(".section").forEach(sec => {
-    sec.classList.remove("active");
-  });
+  document.querySelectorAll(".section").forEach(sec =>
+    sec.classList.remove("active")
+  );
+  document.getElementById(id)?.classList.add("active");
 
-  const target = document.getElementById(id);
-  if (target) target.classList.add("active");
+  document.querySelectorAll("nav button").forEach(btn =>
+    btn.classList.toggle("active", btn.dataset.target === id)
+  );
 }
+
 
 function updateLanguage() {
   document.getElementById("occupation").textContent =
