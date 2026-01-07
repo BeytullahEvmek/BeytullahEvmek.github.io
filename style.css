@@ -127,13 +127,16 @@ main {
 /* Section animation */
 /* ===== Section container fix ===== */
 .section {
-  display: block;
-  opacity: 1;
-  transform: none;
+  display: none;
   min-height: 70vh;
   padding: 40px;
   box-sizing: border-box;
 }
+
+.section.active {
+  display: block;
+}
+
 
 /* Responsive: stack vertically, center text on small screens */
 @media (max-width: 768px) {
