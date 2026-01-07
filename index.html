@@ -38,20 +38,46 @@
 
 <!-- ===== NAV ===== -->
 <nav>
-  <button onclick="showSection('about')">About</button>
-  <button onclick="showSection('projects')">Projects</button>
-  <button onclick="showSection('skills')">Skills</button>
-  <button onclick="showSection('hobbies')">Hobbies</button>
-  <button onclick="showSection('references')">References</button>
-  <button onclick="showSection('certificates')">Certificates</button>
+  <button onclick="showSection('about')">
+    <span class="lang-en">About</span>
+    <span class="lang-tr">Hakkımda</span>
+  </button>
+  <button onclick="showSection('projects')">
+    <span class="lang-en">Projects</span>
+    <span class="lang-tr">Projeler</span>
+  </button>
+  <button onclick="showSection('skills')">
+    <span class="lang-en">Skills</span>
+    <span class="lang-tr">Yetenekler</span>
+  </button>
+  <button onclick="showSection('hobbies')">
+    <span class="lang-en">Hobbies</span>
+    <span class="lang-tr">Hobilerim</span>
+  </button>
+  <button onclick="showSection('references')">
+    <span class="lang-en">References</span>
+    <span class="lang-tr">Referanslar</span>
+  </button>
+  <button onclick="showSection('certificates')">
+    <span class="lang-en">Certificates</span>
+    <span class="lang-tr">Sertifikalar</span>
+  </button>
 </nav>
+
 
 <!-- ===== CONTENT ===== -->
 <main>
 
   <section id="about" class="section active">
     <!-- ✏️ EDIT HERE -->
-    <p>About me content.</p>
+  <p class="lang-en">I recently graduated from the Computer Engineering (English) department.
+I enjoy learning new things about operating systems and current software.
+I want to gain new experiences, learn more about my field,
+and develop my skills.</p>
+  <p class="lang-tr">Bilgisayar Mühendisliği (İngilizce) bölümünden yeni mezun oldum.
+OS ve güncel yazılımlar hakkında yeni bilgiler edinmeyi seviyorum.
+Yeni deneyimler kazanmak, alanımda daha fazla bilgi sahibi olmak
+ve yeteneklerimi geliştirmek istiyorum.</p>
   </section>
 
   <section id="projects" class="section">
