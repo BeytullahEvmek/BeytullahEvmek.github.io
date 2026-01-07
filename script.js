@@ -14,16 +14,17 @@ function showSection(id) {
 
 // Update all texts based on current language
 function updateLanguage() {
-  // Header occupation
   document.getElementById("occupation").innerText =
-    language === "en" ? "Computer Engineer (EN)" : "Bilgisayar Mühendisi (TR)";
+    language === "en"
+      ? "Computer Engineer (EN)"
+      : "Bilgisayar Mühendisi (TR)";
 
-  // Show/hide all text elements regardless of tag
   document.querySelectorAll(".lang-en").forEach(el => {
-    el.style.display = language === "en" ? "block" : "none";
+    el.style.display = language === "en" ? "" : "none";
   });
+
   document.querySelectorAll(".lang-tr").forEach(el => {
-    el.style.display = language === "tr" ? "block" : "none";
+    el.style.display = language === "tr" ? "" : "none";
   });
 }
 
