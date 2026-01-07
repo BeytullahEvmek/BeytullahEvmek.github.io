@@ -144,6 +144,56 @@ main {
     transform: translateY(0);
   }
 }
+
+/* About section layout */
+.about-container {
+  display: flex;          /* two-column layout */
+  flex-direction: row;    /* image left, text right */
+  align-items: center;    /* vertically center */
+  gap: 30px;              /* space between image and text */
+  max-width: 1200px;      /* optional max width */
+  margin: 0 auto;         /* center container horizontally */
+  padding: 20px;
+}
+
+/* Profile picture */
+.about-pic {
+  flex: 1;                /* take up left half (or adjust) */
+  display: flex;
+  justify-content: center; /* center image horizontally */
+}
+
+.about-pic img {
+  width: 100%;           /* fill container width */
+  max-width: 300px;      /* optional limit */
+  height: auto;          /* maintain aspect ratio */
+  border-radius: 10px;   /* optional rounded corners */
+  object-fit: cover;     /* crop if needed */
+}
+
+/* Text on the right */
+.about-text {
+  flex: 2;               /* take up remaining space */
+  font-size: 1.2rem;     /* make text bigger */
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column; /* stack image and text on small screens */
+    text-align: center;
+  }
+
+  .about-text {
+    font-size: 1rem;  /* slightly smaller text on mobile */
+  }
+
+  .about-pic img {
+    max-width: 80%;   /* smaller image on mobile */
+  }
+}
+
+
 /* Add at the end of style.css */
 .lang-tr {
   display: none;
