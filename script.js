@@ -16,14 +16,15 @@ function updateLanguage() {
   document.getElementById("occupation").innerText =
     language === "en" ? "Computer Engineer (EN)" : "Bilgisayar Mühendisi (TR)";
 
-  // Show/hide all text elements
+  // Show/hide all text elements regardless of tag
   document.querySelectorAll(".lang-en").forEach(el => {
-    el.style.display = language === "en" ? (el.tagName === "P" ? "block" : "inline") : "none";
+    el.style.display = language === "en" ? "block" : "none";
   });
   document.querySelectorAll(".lang-tr").forEach(el => {
-    el.style.display = language === "tr" ? (el.tagName === "P" ? "block" : "inline") : "none";
+    el.style.display = language === "tr" ? "block" : "none";
   });
 }
+
 
 // Toggle language on header click
 function toggleLanguage() {
