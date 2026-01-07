@@ -19,18 +19,18 @@ function toggleLanguage() {
       ? "Computer Engineer (EN)"
       : "Bilgisayar Mühendisi (TR)";
 
-  // Toggle all text content
+  // Show/hide text content
   document.querySelectorAll(".lang-en").forEach(el => {
-    el.style.display = language === "en" ? "" : "none";
+    el.style.display = language === "en" ? "block" : "none";
   });
   document.querySelectorAll(".lang-tr").forEach(el => {
-    el.style.display = language === "tr" ? "" : "none";
+    el.style.display = language === "tr" ? "block" : "none";
   });
 }
 
-// Apply initial language on page load **without toggling**
+// Apply initial language on page load
 window.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".lang-en").forEach(el => el.style.display = "");
+  document.querySelectorAll(".lang-en").forEach(el => el.style.display = "block");
   document.querySelectorAll(".lang-tr").forEach(el => el.style.display = "none");
   document.getElementById("occupation").innerText = "Computer Engineer (EN)";
 });
