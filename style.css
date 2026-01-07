@@ -210,14 +210,15 @@ main {
   display: none;
   opacity: 0;
   transform: translateY(10px);
-  min-height: 70vh;  /* ensures section is visible */
+  min-height: 70vh; /* ensures visible height */
+  flex-direction: column; /* stack inside sections by default */
 }
-
 
 .section.active {
-  display: block;
+  display: flex;   /* flex instead of block */
   animation: fadeSlide 0.4s ease forwards;
 }
+
 
 .section .section-container {
   display: flex;
