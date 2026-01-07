@@ -1,4 +1,4 @@
-let language = "en"; // start in English
+let language = "en"; // Start site in English
 let musicPlaying = false;
 
 // Show a section
@@ -9,30 +9,30 @@ function showSection(id) {
   document.getElementById(id).classList.add("active");
 }
 
-/* 🌍 Language toggle */
-function toggleLanguage() {
-  language = language === "en" ? "tr" : "en";
-
+// Update all texts based on current language
+function updateLanguage() {
   // Header occupation
   document.getElementById("occupation").innerText =
-    language === "en"
-      ? "Computer Engineer (EN)"
-      : "Bilgisayar Mühendisi (TR)";
+    language === "en" ? "Computer Engineer (EN)" : "Bilgisayar Mühendisi (TR)";
 
-  // Show/hide text content
+  // Show/hide all text elements
   document.querySelectorAll(".lang-en").forEach(el => {
-    el.style.display = language === "en" ? "block" : "none";
+    el.style.display = language === "en" ? (el.tagName === "P" ? "block" : "inline") : "none";
   });
   document.querySelectorAll(".lang-tr").forEach(el => {
-    el.style.display = language === "tr" ? "block" : "none";
+    el.style.display = language === "tr" ? (el.tagName === "P" ? "block" : "inline") : "none";
   });
 }
 
-// Apply initial language on page load
+// Toggle language on header click
+function toggleLanguage() {
+  language = language === "en" ? "tr" : "en";
+  updateLanguage();
+}
+
+// Apply initial language after DOM loads
 window.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".lang-en").forEach(el => el.style.display = "block");
-  document.querySelectorAll(".lang-tr").forEach(el => el.style.display = "none");
-  document.getElementById("occupation").innerText = "Computer Engineer (EN)";
+  updateLanguage();
 });
 
 /* 🌙 Dark mode */
