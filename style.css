@@ -137,6 +137,11 @@ main {
   display: block;
 }
 
+[hidden] {
+  display: none !important;
+}
+
+
 
 /* Responsive: stack vertically, center text on small screens */
 @media (max-width: 768px) {
