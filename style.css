@@ -227,49 +227,49 @@ main {
   }
 }
 
-/* ===== Generic sections ===== */
-.section .section-container {
-  display: flex;
-  flex-direction: column;   /* stack text vertically */
-  align-items: flex-start;
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
+/* Projects section: normal flow, stacked content */
+#projects {
+  display: block;
+  padding: 60px 40px;
+  min-height: 70vh;
+  box-sizing: border-box;
 }
 
-.section .section-text {
-  font-size: 1.2rem;
-  line-height: 1.6;
+/* Skills section: you can customize individually */
+#skills {
+  display: block;
+  padding: 60px 40px;
+  min-height: 70vh;
+  box-sizing: border-box;
 }
 
-/* Contact icons */
-.contact-icons {
-  display: flex;
-  gap: 20px;
-  margin-top: 15px;
+/* Repeat for hobbies, references, certificates, contact */
+#hobbies{
+  display: block;
+  padding: 60px 40px;
+  min-height: 70vh;
+  box-sizing: border-box;
 }
-
-.contact-icons img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
+/* Repeat for hobbies, references, certificates, contact */
+#references{
+  display: block;
+  padding: 60px 40px;
+  min-height: 70vh;
+  box-sizing: border-box;
 }
-
-/* Responsive generic sections */
-@media (max-width: 768px) {
-  .section .section-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .section .section-text {
-    text-align: center;
-  }
-
-  .contact-icons {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+/* Repeat for hobbies, references, certificates, contact */
+#certificates{
+  display: block;
+  padding: 60px 40px;
+  min-height: 70vh;
+  box-sizing: border-box;
+}
+/* Repeat for hobbies, references, certificates, contact */
+#contact{
+  display: block;
+  padding: 60px 40px;
+  min-height: 70vh;
+  box-sizing: border-box;
 }
 
 /* Language toggle */
