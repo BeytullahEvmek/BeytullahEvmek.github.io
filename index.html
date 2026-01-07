@@ -17,17 +17,17 @@
   </div>
 
   <!-- iOS-style toggles -->
-  <div class="header-right">
-    <label class="switch">
-      <input type="checkbox" onchange="toggleDarkMode()">
-      <span class="slider"></span>
-    </label>
-
-    <label class="switch">
-      <input type="checkbox" onchange="toggleMusic()">
-      <span class="slider"></span>
-    </label>
+<div class="header-right">
+  <div class="slider-toggle" onclick="toggleDarkMode(this)">
+    <div class="knob"></div>
+    <span>🌙</span>
   </div>
+
+  <div class="slider-toggle" onclick="toggleMusic(this)">
+    <div class="knob"></div>
+    <span>🎵</span>
+  </div>
+</div>
 </header>
 
 
