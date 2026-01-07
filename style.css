@@ -145,53 +145,66 @@ main {
   }
 }
 
-/* About section layout */
+/* Make About section fill viewport */
+#about {
+  display: flex;
+  height: 100vh;           /* full viewport height */
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
 .about-container {
-  display: flex;          /* two-column layout */
-  flex-direction: row;    /* image left, text right */
-  align-items: center;    /* vertically center */
-  gap: 30px;              /* space between image and text */
-  max-width: 1200px;      /* optional max width */
-  margin: 0 auto;         /* center container horizontally */
-  padding: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: row;     /* image left, text right */
+  align-items: center;     /* vertically center content */
+  gap: 30px;
+  width: 100%;
 }
 
 /* Profile picture */
 .about-pic {
-  flex: 1;                /* take up left half (or adjust) */
+  flex: 1;                 /* left side */
   display: flex;
-  justify-content: center; /* center image horizontally */
+  justify-content: center;
+  align-items: center;
+  height: 100%;            /* fill container height */
 }
 
 .about-pic img {
-  width: 100%;           /* fill container width */
-  max-width: 300px;      /* optional limit */
-  height: auto;          /* maintain aspect ratio */
-  border-radius: 10px;   /* optional rounded corners */
-  object-fit: cover;     /* crop if needed */
+  height: 100%;            /* fill height */
+  width: auto;             /* maintain aspect ratio */
+  max-width: 100%;         /* don’t overflow horizontally */
+  border-radius: 10px;     /* optional */
+  object-fit: cover;       /* crop if necessary */
 }
 
 /* Text on the right */
 .about-text {
-  flex: 2;               /* take up remaining space */
-  font-size: 1.2rem;     /* make text bigger */
+  flex: 2;                 /* take remaining space */
+  font-size: 1.3rem;
   line-height: 1.6;
+  overflow-y: auto;        /* scroll if content too long */
 }
 
+/* Responsive: stack on mobile */
 @media (max-width: 768px) {
-  .about-container {
-    flex-direction: column; /* stack image and text on small screens */
-    text-align: center;
-  }
-
-  .about-text {
-    font-size: 1rem;  /* slightly smaller text on mobile */
+  #about, .about-container {
+    flex-direction: column;
+    height: auto;
   }
 
   .about-pic img {
-    max-width: 80%;   /* smaller image on mobile */
+    height: auto;
+    max-width: 80%;
+  }
+
+  .about-text {
+    width: 100%;
+    text-align: center;
   }
 }
+
 
 
 /* Add at the end of style.css */
