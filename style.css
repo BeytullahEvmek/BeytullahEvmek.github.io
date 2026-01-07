@@ -66,9 +66,11 @@ header {
 
 .toggle-icon {
   font-size: 18px;
-  opacity: 0.75;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
   user-select: none;
 }
+
 
 /* Knob */
 .pill-knob {
