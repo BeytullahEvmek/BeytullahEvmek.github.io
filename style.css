@@ -124,12 +124,13 @@ main {
 }
 
 /* Section animation */
+/* ===== Section container fix ===== */
 .section {
   display: none;
   opacity: 0;
   transform: translateY(10px);
-  min-height: 50vh;  /* ensures section is visible */
-  padding: 40px 20px;
+  min-height: 70vh; /* ensures section is visible */
+  padding: 40px;
   box-sizing: border-box;
 }
 
@@ -138,12 +139,33 @@ main {
   animation: fadeSlide 0.4s ease forwards;
 }
 
-@keyframes fadeSlide {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Flex container inside sections */
+.section .section-container {
+  display: flex;
+  flex-direction: column;  /* stack content vertically */
+  align-items: flex-start; /* align left for desktop */
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section .section-text {
+  width: 100%;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Responsive: stack vertically, center text on small screens */
+@media (max-width: 768px) {
+  .section .section-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .section .section-text {
+    text-align: center;
   }
 }
+
 
 /* Make About section fill viewport */
 #about {
