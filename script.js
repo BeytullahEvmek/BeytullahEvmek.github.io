@@ -4,10 +4,11 @@ let musicPlaying = false;
 // Show a section
 function showSection(id) {
   document.querySelectorAll(".section").forEach(section => {
-    section.classList.remove("active");
+    section.classList.remove("active"); // hide all
   });
-  document.getElementById(id).classList.add("active");
+  document.getElementById(id).classList.add("active"); // show clicked
 }
+
 
 // Update all texts based on current language
 function updateLanguage() {
