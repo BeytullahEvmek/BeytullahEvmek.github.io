@@ -127,6 +127,7 @@ main {
 }
 
 /* Section animation */
+/* SECTION STYLES */
 .section {
   display: none;
   opacity: 0;
@@ -135,125 +136,61 @@ main {
 }
 
 .section.active {
-  display: flex;       /* flexible layout per section */
+  display: block; /* use block, flex breaks small content */
   animation: fadeSlide 0.4s ease forwards;
 }
 
-
-@keyframes fadeSlide {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Make About section fill viewport */
-#about{
+/* About */
+#about {
   display: flex;
-  height: 100vh;           /* full viewport height */
-  padding: 0 40px;
-  box-sizing: border-box;
-}
-
-.about-container {
-  display: flex;
-  flex: 1;
-  flex-direction: row;     /* image left, text right */
-  align-items: center;     /* vertically center content */
-  gap: 30px;
-  width: 100%;
-}
-
-/* Profile picture */
-.about-pic {
-  flex: 1;                 /* left side */
-  display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  height: 100%;            /* fill container height */
+  gap: 30px;
+  min-height: 80vh; /* only About gets large height */
+  padding: 40px;
 }
 
 .about-pic img {
-  height: 100%;            /* fill height */
-  width: auto;             /* maintain aspect ratio */
-  max-width: 100%;         /* don’t overflow horizontally */
-  border-radius: 10px;     /* optional */
-  object-fit: cover;       /* crop if necessary */
+  max-height: 70vh; /* prevent extra tall images */
+  width: auto;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-/* Text on the right */
-.about-text {
-  flex: 2;                 /* take remaining space */
-  font-size: 1.3rem;
-  line-height: 1.6;
-  overflow-y: auto;        /* scroll if content too long */
-}
-
-/* Responsive: stack on mobile */
-@media (max-width: 768px) {
-  #about, .about-container {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .about-pic img {
-    max-height: 80%;
-    max-width: 80%;
-  }
-
-  .about-text {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-#projects,
-#skills,
-#hobbies,
-#references,
-#certificates {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  min-height: 100vh;
+/* Other sections */
+#projects, #skills, #hobbies, #references, #certificates {
+  display: block; /* no flex stretching */
   padding: 40px;
 }
 
+/* Projects list */
+.section-text ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Contact section */
 #contact {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* center vertically */
+  justify-content: center; /* vertical centering */
   align-items: flex-start;
   gap: 30px;
-  min-height: 100vh;
+  min-height: 60vh; /* enough for icons */
   padding: 40px;
 }
-/* Contact */
+
+/* Contact icons */
 .contact-items p {
-  font-size: 2rem;
-  margin: 25px 0;
-  line-height: 2.5rem;
   display: flex;
   align-items: center;
   gap: 20px;
+  font-size: 2rem;
+  margin: 15px 0;
 }
 
-.contact-icon {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-}
-
-.contact-items a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: bold;
-}
-
-.contact-items a:hover {
-  color: #4aa3d0;
-  transform: scale(1.05);
-}
 
 /* Add at the end of style.css */
 .lang-tr {
