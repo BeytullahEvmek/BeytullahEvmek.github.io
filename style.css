@@ -277,8 +277,79 @@ main {
 #skills {
 
   padding: 60px 40px;
-  min-height: 70vh;
-  box-sizing: border-box;
+}
+
+/* ============================= */
+/*           SKILLS              */
+/* ============================= */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+/* Square card */
+.skill-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--card);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-4px);
+}
+
+/* Logo */
+.skill-item img {
+  width: 65%;
+  height: 65%;
+  object-fit: contain;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover overlay */
+.skill-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effects */
+.skill-item:hover img {
+  transform: scale(1.1);
+  opacity: 0.15;
+}
+
+.skill-item:hover .skill-overlay {
+  opacity: 1;
+}
+
+/* Disclaimer text */
+.skills-note {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
 
 /* Repeat for hobbies, references, certificates, contact */
