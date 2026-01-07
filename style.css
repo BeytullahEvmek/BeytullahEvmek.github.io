@@ -274,6 +274,58 @@ main {
   box-sizing: border-box;
 }
 
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-top: 30px;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.project-row img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Zig-zag flip */
+.project-row:nth-child(even) {
+  direction: rtl;
+}
+
+.project-row:nth-child(even) .project-text {
+  direction: ltr;
+}
+
+.project-text {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Mobile: stack */
+@media (max-width: 768px) {
+  .project-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .project-row:nth-child(even) {
+    direction: ltr;
+  }
+
+  .project-row img {
+    margin: 0 auto;
+  }
+}
+
+
 /* Skills section: you can customize individually */
 #skills {
 
