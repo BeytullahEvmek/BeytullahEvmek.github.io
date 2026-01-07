@@ -131,12 +131,14 @@ main {
   display: none;
   opacity: 0;
   transform: translateY(10px);
+  transition: opacity 0.4s, transform 0.4s;
 }
 
 .section.active {
-  display: block;
+  display: flex;       /* flexible layout per section */
   animation: fadeSlide 0.4s ease forwards;
 }
+
 
 @keyframes fadeSlide {
   to {
@@ -205,27 +207,32 @@ main {
   }
 }
 
-.contact-items p {
-  font-size: 2rem;          /* really big */
-  margin: 20px 0;
-  line-height: 2.5rem;
+/* PROJECTS section */
+#projects {
+  flex-direction: column;     /* stack text and images vertically */
+  padding: 0 40px;
 }
 
+#projects .section-text ul {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
 
-/* Contact*/
+/* CONTACT section */
+#contact {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;   /* or center */
+  padding: 0 40px;
+}
+
 .contact-items p {
-  font-size: 2rem;           /* big text */
+  font-size: 2rem;
   margin: 25px 0;
   line-height: 2.5rem;
   display: flex;
   align-items: center;
-  gap: 20px;                 /* space between icon and text */
-}
-
-.contact-icon {
-  width: 50px;               /* big icons */
-  height: 50px;
-  object-fit: contain;
+  gap: 20px;
 }
 
 
