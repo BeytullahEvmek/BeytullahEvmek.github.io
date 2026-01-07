@@ -213,15 +213,21 @@ main {
 
 
 /* Contact*/
-.contact-items a {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: bold;
+.contact-items p {
+  font-size: 2rem;           /* big text */
+  margin: 25px 0;
+  line-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;                 /* space between icon and text */
 }
 
-.contact-items a:hover {
-  color: #4aa3d0;           /* optional hover color */
+.contact-icon {
+  width: 50px;               /* big icons */
+  height: 50px;
+  object-fit: contain;
 }
+
 
 
 /* Add at the end of style.css */
