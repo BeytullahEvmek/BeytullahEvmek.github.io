@@ -40,4 +40,11 @@ function toggleMusic(el) {
     el.classList.remove("active");
   }
 }
+/* button style*/
+function toggleDarkMode(el) {
+  document.body.classList.toggle("dark");
+  el.classList.toggle("active");
 
+  const icon = el.parentElement.querySelector(".toggle-icon");
+  icon.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+}
