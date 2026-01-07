@@ -148,7 +148,7 @@ main {
 }
 
 /* Make About section fill viewport */
-#about {
+#about{
   display: flex;
   height: 100vh;           /* full viewport height */
   padding: 0 40px;
@@ -197,7 +197,7 @@ main {
   }
 
   .about-pic img {
-    height: auto;
+    max-height: 80%;
     max-width: 80%;
   }
 
@@ -207,25 +207,15 @@ main {
   }
 }
 
-/* PROJECTS section */
-#projects {
-  flex-direction: column;     /* stack text and images vertically */
-  padding: 0 40px;
-}
-
-#projects .section-text ul {
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-/* CONTACT section */
-#contact {
+#projects, #skills, #hobbies, #references, #certificates, #contact {
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;   /* or center */
-  padding: 0 40px;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 40px;
 }
 
+/* Contact */
 .contact-items p {
   font-size: 2rem;
   margin: 25px 0;
@@ -235,7 +225,22 @@ main {
   gap: 20px;
 }
 
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
 
+.contact-items a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: bold;
+}
+
+.contact-items a:hover {
+  color: #4aa3d0;
+  transform: scale(1.05);
+}
 
 /* Add at the end of style.css */
 .lang-tr {
