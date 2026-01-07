@@ -57,6 +57,19 @@ header {
   box-shadow: inset 0 0 0 1px #ccc;
 }
 
+.toggle-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.toggle-icon {
+  font-size: 18px;
+  opacity: 0.75;
+  user-select: none;
+}
+
 /* Knob */
 .pill-knob {
   width: 30px;
