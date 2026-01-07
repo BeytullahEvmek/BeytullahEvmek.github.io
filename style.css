@@ -45,47 +45,43 @@ header {
   gap: 15px;
 }
 
-/* iOS-style toggle */
-.switch {
+.slider-toggle {
+  width: 60px;
+  height: 28px;
+  background: #bbb;
+  border-radius: 20px;
   position: relative;
-  display: inline-block;
-  width: 46px;
-  height: 26px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
   cursor: pointer;
-  inset: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  transition: background 0.3s;
 }
 
-.slider:before {
+.slider-toggle span {
   position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: 0.4s;
+  right: 6px;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.slider-toggle .knob {
+  width: 22px;
+  height: 22px;
+  background: white;
   border-radius: 50%;
+  position: absolute;
+  left: 4px;
+  transition: transform 0.3s;
 }
 
-.switch input:checked + .slider {
-  background-color: #4cd964;
+/* ON state */
+.slider-toggle.active {
+  background: #4cd964;
 }
 
-.switch input:checked + .slider:before {
-  transform: translateX(20px);
+.slider-toggle.active .knob {
+  transform: translateX(32px);
 }
 
 
