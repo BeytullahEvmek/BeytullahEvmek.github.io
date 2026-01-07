@@ -1,3 +1,9 @@
+* {
+  outline: 1px solid red !important;
+  color: black !important;
+  background: white !important;
+}
+
 :root {
   --bg: #f6f6f6;
   --text: #222;
