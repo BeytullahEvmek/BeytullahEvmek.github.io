@@ -9,19 +9,27 @@
 
 <!-- ===== HEADER ===== -->
 <header>
-  <h1 id="name">Your Name</h1>
+  <div class="header-left">
+    <h1 id="name">Your Name</h1>
+    <h2 id="occupation" onclick="toggleLanguage()">
+      Computer Engineer (EN)
+    </h2>
+  </div>
 
-  <!-- Click = language toggle -->
-  <h2 id="occupation" onclick="toggleLanguage()">
-    Computer Engineer (EN)
-  </h2>
+  <!-- iOS-style toggles -->
+  <div class="header-right">
+    <label class="switch">
+      <input type="checkbox" onchange="toggleDarkMode()">
+      <span class="slider"></span>
+    </label>
 
-  <!-- Toggles -->
-  <div class="toggles">
-    <button onclick="toggleDarkMode()">🌙 Dark Mode</button>
-    <button onclick="toggleMusic()">🎵 Music</button>
+    <label class="switch">
+      <input type="checkbox" onchange="toggleMusic()">
+      <span class="slider"></span>
+    </label>
   </div>
 </header>
+
 
 <!-- ===== NAV ===== -->
 <nav>
