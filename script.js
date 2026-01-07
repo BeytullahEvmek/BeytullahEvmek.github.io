@@ -28,6 +28,7 @@ function toggleLanguage() {
   });
 }
 
+
 // Apply initial language on page load
 toggleLanguage();
 
