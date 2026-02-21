@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
+  <script src="script.js" defer></script>
   <meta charset="UTF-8" />
   <title>Beytullah Evmek | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
 </head>
 
 <body class="dark">
@@ -19,7 +19,9 @@
       </h2>
     </div>
 
+    <!-- iOS-style toggles -->
     <div class="header-right">
+
       <!-- Language Toggle -->
       <div class="toggle-group">
         <div class="toggle-icon">🌍</div>
@@ -30,7 +32,6 @@
         </div>
       </div>
 
-      <!-- Dark Mode -->
       <div class="toggle-group">
         <div class="toggle-icon">🌙</div>
         <div class="pill-toggle active" onclick="toggleDarkMode(this)">
@@ -38,7 +39,6 @@
         </div>
       </div>
 
-      <!-- Music -->
       <div class="toggle-group">
         <div class="toggle-icon">🎵</div>
         <div class="pill-toggle blue" onclick="toggleMusic(this)">
@@ -107,47 +107,113 @@
       </div>
     </section>
 
-    <!-- Projects -->
+    <!-- ===== PROJECTS ===== -->
     <section id="projects" class="section">
       <h2 class="section-title">
         <span class="lang-en">Projects</span>
         <span class="lang-tr">Projeler</span>
       </h2>
+
       <div class="projects-list">
+
         <!-- Project 1 -->
         <div class="project-row">
           <img src="resources/project1.png" alt="Oscillatory Integral Solver">
+
           <div class="project-text">
             <p class="lang-en">
               <strong>Oscillatory Integral Solver</strong><br>
-              Solves Havai, Constant phase, and Filon functions based on user input, plots graphs, explains solutions
-              step-by-step, and exports results into a Word document.
+              Solves Havai, Constant phase, and Filon functions based on user input,
+              plots graphs, explains solutions step-by-step, and exports results
+              into a Word document.
             </p>
             <p class="lang-tr">
               <strong>Salınımlı İntegral Çözücü</strong><br>
-              Kullanıcıdan alınan verilerle Havai, Sabit faz ve Filon fonksiyonlarını çözen, grafik çizen, çözümleri
-              adım adım açıklayan ve sonuçları Word dosyasına aktaran bir program.
+              Kullanıcıdan alınan verilerle Havai, Sabit faz ve Filon fonksiyonlarını çözen,
+              grafik çizen, çözümleri adım adım açıklayan ve sonuçları Word dosyasına
+              aktaran bir program.
             </p>
           </div>
         </div>
+
         <!-- Project 2 -->
         <div class="project-row">
           <img src="resources/project2.png" alt="Armoyu Control Panel">
+
           <div class="project-text">
             <p class="lang-en">
               <strong>Armoyu Control Panel</strong><br>
-              A role-based admin panel allowing CRUD operations on the database, admin authorization management, and
-              read-only access for normal users.
+              A role-based admin panel allowing CRUD operations on the database,
+              admin authorization management, and read-only access for normal users.
             </p>
             <p class="lang-tr">
               <strong>Armoyu Kontrol Paneli</strong><br>
-              Veri tabanı üzerinde CRUD işlemleri yapabilen, diğer kullanıcılara admin yetkisi verebilen ve normal
-              kullanıcıların yalnızca görüntüleme yapmasını sağlayan yetkilendirme tabanlı bir kontrol paneli.
+              Veri tabanı üzerinde CRUD işlemleri yapabilen, diğer kullanıcılara admin
+              yetkisi verebilen ve normal kullanıcıların yalnızca görüntüleme yapmasını
+              sağlayan yetkilendirme tabanlı bir kontrol paneli.
             </p>
           </div>
         </div>
+
+        <!-- Project 3 -->
+        <div class="project-row">
+          <img src="resources/project3.png" alt="RFID Smart Lock System">
+
+          <div class="project-text">
+            <p class="lang-en">
+              <strong>RFID Smart Lock System</strong><br>
+              A smart home project that opens a spring-loaded door using predefined
+              RFID cards via radio frequency communication.
+            </p>
+            <p class="lang-tr">
+              <strong>RFID'li Akıllı Kilit Sistemi</strong><br>
+              Önceden tanımlanmış RFID kartlar sayesinde süngülü bir kapıyı
+              radyo frekansları kullanarak açabilen akıllı ev projesi.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-row">
+          <img src="resources/project4.png" alt="Image Enhancement">
+
+          <div class="project-text">
+            <p class="lang-en">
+              <strong>Image Enhancement</strong><br>
+              Improves image analysis using low-pass and high-pass filters
+              through frequency domain filtering techniques.
+            </p>
+            <p class="lang-tr">
+              <strong>Görüntü Geliştirme</strong><br>
+              Frekans alanında filtreleme yöntemleri kullanarak düşük ve yüksek
+              geçiş filtreleri ile görüntü analizini iyileştiren bir program.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-row">
+          <img src="resources/project5.png" alt="UTY Translation Project">
+
+          <div class="project-text">
+            <p class="lang-en">
+              <strong>UTY Translation</strong><br>
+              A game localization project completed using data mining techniques.
+              The translation was downloaded over 14,000 times within one year
+              and used by several YouTubers.
+            </p>
+            <p class="lang-tr">
+              <strong>UTY Çevirisi</strong><br>
+              Veri madenciliği yöntemleri kullanılarak gerçekleştirilen bir oyun
+              çeviri projesidir. Çeviri bir yıl içinde 14.000’den fazla indirilmiş
+              ve bazı YouTuberlar tarafından kullanılmıştır.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
+
 
     <!-- Skills -->
     <section id="skills" class="section">
@@ -155,9 +221,12 @@
         <span class="lang-en">Skills</span>
         <span class="lang-tr">Yetenekler</span>
       </h2>
+
       <div class="skills-grid" id="skillsGrid"></div>
+
       <p class="skills-note" id="skills-note"></p>
     </section>
+
 
     <!-- Hobbies -->
     <section id="hobbies" class="section">
@@ -165,21 +234,33 @@
         <span class="lang-en">Hobbies</span>
         <span class="lang-tr">Hobilerim</span>
       </h2>
-      <div class="section-text">
-        <ul class="lang-en hobbies-list">
-          <li>Gaming</li>
-          <li>Voice Acting</li>
-          <li>Pixel-art</li>
-          <li>Listening OST's</li>
-          <li>Cooking</li>
-        </ul>
-        <ul class="lang-tr hobbies-list">
-          <li>Oyun Oynamak</li>
-          <li>Seslendirme</li>
-          <li>Piksel resim çizme</li>
-          <li>Oyun Müzikleri (OST) Dinlemek</li>
-          <li>Yemek Yapmak</li>
-        </ul>
+      <div class="section-container">
+        <div class="section-text">
+          <ul class="lang-en hobbies-list">
+            <li>Gaming</li>
+            <li>Voice Acting</li>
+            <li>Pixel-art</li>
+            <li>Listening OST's</li>
+            <li>Cooking</li>
+            <li>Alternative Universe Theorising</li>
+            <li>Attending Community Interactions</li>
+            <li>Analysis On Extremely Niche Topics</li>
+            <li>Lost Media / Abandonware (J2ME / Adobe Flash)</li>
+            <li>Trying / Learning New Things</li>
+          </ul>
+          <ul class="lang-tr hobbies-list">
+            <li>Oyun Oynamak</li>
+            <li>Seslendirme</li>
+            <li>Piksel resim çizme</li>
+            <li>Oyun Müzikleri (OST) Dinlemek</li>
+            <li>Yemek Yapmak</li>
+            <li>Alternatif Evren Teorileri Üretmek</li>
+            <li>Topluluk Etkileşimlerine Katılmak</li>
+            <li>Çok Niş Konular Üzerine Analizler</li>
+            <li>Kayıp Medya / Terk Edilmiş Yazılımlar (J2ME / Adobe Flash)</li>
+            <li>Yeni Şeyler Denemek ve Öğrenmek</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -190,10 +271,46 @@
         <span class="lang-tr">Referanslar</span>
       </h2>
       <div class="references-grid">
+        <!-- Reference 1 -->
         <div class="reference-item">
-          <div class="ref-name">ATAKAN ÖZTUNCER</div>
-          <div class="ref-title">Research Assistant</div>
+          <div class="ref-name">
+            <span class="lang-en">Res. Asst.</span>
+            <span class="lang-tr">Arş. Gör.</span>
+            ATAKAN ÖZTUNCER
+          </div>
+          <div class="ref-title">
+            <span class="lang-en">Research Assistant</span>
+            <span class="lang-tr">Araştırma Görevlisi</span>
+          </div>
           <a href="mailto:atakanoztuncer@aydin.edu.tr" class="ref-email">atakanoztuncer@aydin.edu.tr</a>
+        </div>
+
+        <!-- Reference 2 -->
+        <div class="reference-item">
+          <div class="ref-name">
+            <span class="lang-en">Lecturer Dr.</span>
+            <span class="lang-tr">Öğr. Gör. Dr.</span>
+            MHD WASIM RAED
+          </div>
+          <div class="ref-title">
+            <span class="lang-en">Lecturer</span>
+            <span class="lang-tr">Öğretim Görevlisi</span>
+          </div>
+          <a href="mailto:mhdwasimraed@aydin.edu.tr" class="ref-email">mhdwasimraed@aydin.edu.tr</a>
+        </div>
+
+        <!-- Reference 3 -->
+        <div class="reference-item">
+          <div class="ref-name">
+            <span class="lang-en">Asst. Prof. Dr.</span>
+            <span class="lang-tr">Dr. Öğr. Üyesi</span>
+            YAVUZ ÇAĞLAR CERŞİT
+          </div>
+          <div class="ref-title">
+            <span class="lang-en">Assistant Professor</span>
+            <span class="lang-tr">Dr. Öğretim Üyesi</span>
+          </div>
+          <a href="mailto:yavuzcaglarcersit@aydin.edu.tr" class="ref-email">yavuzcaglarcersit@aydin.edu.tr</a>
         </div>
       </div>
     </section>
@@ -205,6 +322,8 @@
         <span class="lang-tr">Sertifikalar</span>
       </h2>
       <div class="cert-grid">
+
+        <!-- 1. Dec 2024: Entrepreneurship and Incorporation Event -->
         <div class="cert-card">
           <div class="cert-header">
             <div class="cert-date">Dec 2024</div>
@@ -224,6 +343,7 @@
           </div>
         </div>
 
+        <!-- 2. Nov 2024: C-Level Day -->
         <div class="cert-card">
           <div class="cert-header">
             <div class="cert-date">Nov 2024</div>
@@ -246,7 +366,158 @@
             </a>
           </div>
         </div>
+
+        <!-- 3. Nov 2024: Turkcell Academic Meetings -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-date">Nov 2024</div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-name">
+              <span class="lang-en">Turkcell Academic Meetings</span>
+              <span class="lang-tr">Turkcell Akademik Buluşmaları</span>
+            </h3>
+          </div>
+          <div class="cert-actions">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7272659980967661568/" target="_blank"
+              class="cert-link">
+              <span class="lang-en">View Post</span>
+              <span class="lang-tr">Paylaşımı Görüntüle</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. May 2024: IAU R&D Summit -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-date">May 2024</div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-name">
+              <span class="lang-en">IAU R&D Summit</span>
+              <span class="lang-tr">İAÜ Ar-Ge Zirve Aydın</span>
+            </h3>
+          </div>
+          <div class="cert-actions">
+            <a href="https://digicertify.net//c/NYMZyjL4" target="_blank" class="cert-verify-link">
+              <span class="lang-en">Certificate Link</span>
+              <span class="lang-tr">Sertifika Linki</span>
+            </a>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7282421212960407556/" target="_blank"
+              class="cert-link">
+              <span class="lang-en">View Post</span>
+              <span class="lang-tr">Paylaşımı Görüntüle</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Mar 2024: Intellectual Property and Technology Law -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-date">Mar 2024</div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-name">
+              <span class="lang-en">Intellectual Property and Technology Law</span>
+              <span class="lang-tr">Fiziki Mülkiyet Ve Teknoloji Hukuku</span>
+            </h3>
+          </div>
+          <div class="cert-actions">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7174790716991094784/" target="_blank"
+              class="cert-link">
+              <span class="lang-en">View Post</span>
+              <span class="lang-tr">Paylaşımı Görüntüle</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Jan 2024: Sector Days - Economy and Finance Day -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-date">Jan 2024</div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-name">
+              <span class="lang-en">Sector Days - Economy and Finance Day</span>
+              <span class="lang-tr">Sektör Günleri Ekonomi ve Finans Günü</span>
+            </h3>
+          </div>
+          <div class="cert-actions">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7275176564944711680/" target="_blank"
+              class="cert-link">
+              <span class="lang-en">View Post</span>
+              <span class="lang-tr">Paylaşımı Görüntüle</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Jan 2024: Sector Days - Software Day -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-date">Jan 2024</div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-name">
+              <span class="lang-en">Sector Days - Software Day</span>
+              <span class="lang-tr">Sektör Günleri Yazılım Günü</span>
+            </h3>
+          </div>
+          <div class="cert-actions">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7275176148106362883/" target="_blank"
+              class="cert-link">
+              <span class="lang-en">View Post</span>
+              <span class="lang-tr">Paylaşımı Görüntüle</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 8. May 2023: Software and AI Seminar -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-date">May 2023</div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-name">
+              <span class="lang-en">Software and Artificial Intelligence Seminar</span>
+              <span class="lang-tr">Yazılım Ve Yapay Zeka Semineri</span>
+            </h3>
+          </div>
+          <div class="cert-actions">
+            <a href="https://verified.sertifier.com/en/verify/53204273455535/" target="_blank" class="cert-verify-link">
+              <span class="lang-en">Certificate Link</span>
+              <span class="lang-tr">Sertifika Linki</span>
+            </a>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7194448972554321920/" target="_blank"
+              class="cert-link">
+              <span class="lang-en">View Post</span>
+              <span class="lang-tr">Paylaşımı Görüntüle</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 9. Mar 2023: Tech Tetris Academy -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-date">Mar 2023</div>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-name">
+              <span class="lang-en">Tech Tetris Academy</span>
+              <span class="lang-tr">Tech Tetris Academy</span>
+            </h3>
+          </div>
+          <div class="cert-actions">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7092804056967970816/" target="_blank"
+              class="cert-link">
+              <span class="lang-en">View Post</span>
+              <span class="lang-tr">Paylaşımı Görüntüle</span>
+            </a>
+          </div>
+        </div>
+
       </div>
+
+
     </section>
 
     <!-- Contact -->
@@ -256,21 +527,54 @@
         <span class="lang-tr">İletişim</span>
       </h2>
       <div class="contact-grid">
+
+        <!-- GitHub -->
         <div class="contact-item">
           <img src="resources/Gicon.png" alt="GitHub" class="contact-icon">
           <div class="contact-label">GitHub</div>
-          <a href="https://github.com/BeytullahEvmek" target="_blank" class="contact-info">github.com/BeytullahEvmek</a>
+          <a href="https://github.com/BeytullahEvmek" target="_blank" class="contact-info">
+            github.com/BeytullahEvmek
+          </a>
         </div>
+
+        <!-- LinkedIn -->
         <div class="contact-item">
           <img src="resources/Licon.png" alt="LinkedIn" class="contact-icon">
           <div class="contact-label">LinkedIn</div>
-          <a href="https://linkedin.com/in/beytullah-evmek/" target="_blank"
-            class="contact-info">linkedin.com/in/beytullah-evmek/</a>
+          <a href="https://linkedin.com/in/beytullah-evmek/" target="_blank" class="contact-info">
+            linkedin.com/in/beytullah-evmek/
+          </a>
         </div>
+
+        <!-- Phone -->
+        <div class="contact-item">
+          <img src="resources/Ticon.jpg" alt="Phone" class="contact-icon">
+          <div class="contact-label">
+            <span class="lang-en">Phone</span>
+            <span class="lang-tr">Telefon</span>
+          </div>
+          <span class="contact-info">+90 536 201 44 71</span>
+        </div>
+
+        <!-- Email -->
+        <div class="contact-item">
+          <img src="resources/Eicon.png" alt="Email" class="contact-icon">
+          <div class="contact-label">
+            <span class="lang-en">Email</span>
+            <span class="lang-tr">E-posta</span>
+          </div>
+          <a href="mailto:youremail@example.com" class="contact-info">
+            youremail@example.com
+          </a>
+        </div>
+
       </div>
     </section>
+
+
   </main>
 
+  <!-- YouTube Player for Background Music -->
   <div id="youtube-player" style="position: fixed; bottom: -1000px; left: -1000px; opacity: 0; pointer-events: none;">
   </div>
   <script src="https://www.youtube.com/iframe_api"></script>
