@@ -79,7 +79,7 @@ function renderSkills() {
   });
 }
 
-/* MÜZİK SİSTEMİ - TAMAMEN DÜZELTİLDİ */
+/* MÜZİK SİSTEMİ - KARIŞIK OYNATMA GÜNCELLEMESİ */
 let player;
 let playerReady = false;
 const videoIds = ["GpOHXDO-mQk", "-Jd4EP9OUmc", "xz61v-lss5g", "RKQUblO-iCs", "xhcukDSkxYM", "1AKkLEoixkw"];
@@ -93,8 +93,6 @@ window.onYouTubeIframeAPIReady = function () {
       'autoplay': 1,
       'mute': 1,
       'controls': 0,
-      'loop': 1,
-      'playlist': randomId,
       'enablejsapi': 1
     },
     events: {
@@ -104,12 +102,26 @@ window.onYouTubeIframeAPIReady = function () {
         player.playVideo();
         syncMusicState();
       },
-      'onStateChange': () => {
+      'onStateChange': (e) => {
+        // Müzik bittiğinde (0), yeni bir rastgele şarkıya geç
+        if (e.data === 0) {
+          playNextRandom();
+        }
         syncMusicState();
       }
     }
   });
 };
+
+// Sıradaki rastgele şarkıyı oynat
+function playNextRandom() {
+  const nextId = videoIds[Math.floor(Math.random() * videoIds.length)];
+  if (player && typeof player.loadVideoById === 'function') {
+    player.loadVideoById(nextId);
+    // Ses seviyesini koru
+    player.setVolume(30);
+  }
+}
 
 // API scriptini yükle
 (function () {
