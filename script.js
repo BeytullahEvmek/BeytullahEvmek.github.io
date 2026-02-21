@@ -20,8 +20,8 @@ function updateLanguage() {
   const occ = document.getElementById("occupation");
   if (occ) {
     occ.innerHTML = language === "en"
-      ? `${FLAG_EN} Computer Engineer`
-      : `${FLAG_TR} Bilgisayar Mühendisi`;
+      ? `${FLAG_EN} Computer Engineer ${FLAG_TR}`
+      : `${FLAG_EN} Bilgisayar Mühendisi ${FLAG_TR}`;
   }
 
   document.querySelectorAll(".lang-en").forEach(el => {
@@ -159,19 +159,26 @@ window.onYouTubeIframeAPIReady = function () {
 
 function toggleMusic(el) {
   if (!player || typeof player.getPlayerState !== 'function') return;
-  if (player.isMuted()) player.unMute();
-  if (player.getPlayerState() === 1) {
+  const state = player.getPlayerState();
+  if (state === 1) {
     player.pauseVideo();
+    localStorage.setItem('musicEnabled', 'false');
   } else {
+    player.unMute();
     player.playVideo();
+    localStorage.setItem('musicEnabled', 'true');
   }
 }
 
 document.addEventListener('click', () => {
-  if (player && typeof player.playVideo === 'function' && !musicAttempted) {
-    player.unMute();
-    player.playVideo();
-    musicAttempted = true;
+  const pref = localStorage.getItem('musicEnabled');
+  if (pref !== 'false') {
+    if (player && typeof player.playVideo === 'function' && !musicAttempted) {
+      player.unMute();
+      player.playVideo();
+      musicAttempted = true;
+      localStorage.setItem('musicEnabled', 'true');
+    }
   }
 }, { once: true });
 
