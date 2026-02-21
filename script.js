@@ -4,12 +4,14 @@ let musicPlaying = false;
 const FLAG_EN = `<svg style="width:1.2em; height:1.2em; vertical-align:middle; border-radius:2px" viewBox="0 0 640 480"><rect width="640" height="480" fill="#3c3b6e"/><path stroke="#fff" stroke-width="37" d="M0 37h640M0 111h640M0 185h640M0 259h640M0 333h640M0 407h640"/><rect width="256" height="261" fill="#3c3b6e"/><path fill="#fff" d="M37 28l7 21h22l-18 13 7 21-18-13-18 13 7-21-18-13h22zM102 28l7 21h22l-18 13 7 21-18-13-18 13 7-21-18-13h22zM167 28l7 21h22l-18 13 7 21-18-13-18 13 7-21-18-13h22zM232 28l7 21h22l-18 13 7 21-18-13-18 13 7-21-18-13h22zM70 60l7 21h22l-18 13 7 21-18-13-18 13 7-21-18-13h22zM135 60l7 21h22l-18 13 7 21-18-13-18 13 7-21-18-13h22zM200 60l7 21h22l-18 13 7 21-18-13-18 13 7-21-18-13h22z"/></svg>`;
 const FLAG_TR = `<svg style="width:1.2em; height:1.2em; vertical-align:middle; border-radius:2px" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="#e30a17"/><circle cx="425" cy="400" r="200" fill="#fff"/><circle cx="475" cy="400" r="160" fill="#e30a17"/><path fill="#fff" d="M675 400l-123.6 40.2 47.2-130.4v180.4l-47.2-130.4z"/></svg>`;
 
+// Bölümü göster/gizle
 function showSection(id) {
   document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
   document.getElementById(id)?.classList.add("active");
   document.querySelectorAll("nav button").forEach(btn => btn.classList.toggle("active", btn.dataset.target === id));
 }
 
+// Dil bilgilerini güncelle
 function updateLanguage() {
   const occ = document.getElementById("occupation");
   if (occ) {
@@ -21,12 +23,14 @@ function updateLanguage() {
   document.querySelectorAll(".lang-tr").forEach(el => el.hidden = (language !== "tr"));
 }
 
+// Dili değiştir (TR/EN)
 function toggleLanguage() {
   language = (language === "en") ? "tr" : "en";
   updateLanguage();
   renderSkills();
 }
 
+// Koyu modu aç/kapat
 function toggleDarkMode(el) {
   document.body.classList.toggle("dark");
   el.classList.toggle("active");
@@ -34,6 +38,7 @@ function toggleDarkMode(el) {
   if (icon) icon.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
 }
 
+// Yetenek verileri
 const skills = [
   { img: "Logos (10).png", en: "Ruby", tr: "Ruby" },
   { img: "Logos (11).png", en: "C++", tr: "C++" },
@@ -61,6 +66,7 @@ const skills = [
   { img: "Logos (9).png", en: "Löve", tr: "Löve" }
 ];
 
+// Yetenekleri ekrana çiz
 function renderSkills() {
   const grid = document.getElementById("skillsGrid");
   if (!grid) return;
@@ -73,11 +79,12 @@ function renderSkills() {
   });
 }
 
-/* MUSIC SYSTEM - TRULY FIXED */
+/* MÜZİK SİSTEMİ - TAMAMEN DÜZELTİLDİ */
 let player;
 let playerReady = false;
 const videoIds = ["GpOHXDO-mQk", "-Jd4EP9OUmc", "xz61v-lss5g", "RKQUblO-iCs", "xhcukDSkxYM", "1AKkLEoixkw"];
 
+// YouTube API hazır olduğunda çalışır
 window.onYouTubeIframeAPIReady = function () {
   const randomId = videoIds[Math.floor(Math.random() * videoIds.length)];
   player = new YT.Player('youtube-player', {
@@ -104,6 +111,7 @@ window.onYouTubeIframeAPIReady = function () {
   });
 };
 
+// API scriptini yükle
 (function () {
   const tag = document.createElement('script');
   tag.src = "https://www.youtube.com/iframe_api";
@@ -111,26 +119,28 @@ window.onYouTubeIframeAPIReady = function () {
   first.parentNode.insertBefore(tag, first);
 })();
 
+// Müzik durumunu senkronize et (Açık/Kapalı)
 function syncMusicState() {
   const btn = document.querySelector('.pill-toggle.blue');
   const intendedOn = localStorage.getItem('musicActive') !== 'false';
 
-  // Update button UI based on INTENTION
+  // Düğme UI'sini duruma göre güncelle
   btn?.classList.toggle('active', intendedOn);
 
   if (!playerReady) return;
 
   if (intendedOn) {
-    // Try to unmute/play if user wants it ON
+    // Kullanıcı istiyorsa sesi aç ve oynat
     player.unMute();
     player.playVideo();
   } else {
-    // Mute/pause if user wants it OFF
+    // Kullanıcı istemiyorsa sesi kapat ve duraklat
     player.mute();
     player.pauseVideo();
   }
 }
 
+// Müzik açma/kapama fonksiyonu
 function toggleMusic(el) {
   const currentlyOn = localStorage.getItem('musicActive') !== 'false';
   const newOn = !currentlyOn;
@@ -139,15 +149,16 @@ function toggleMusic(el) {
   syncMusicState();
 }
 
-// Ensure first click activates sound if it was intended to be ON
+// İlk tıklamada müziği (eğer açıksa) etkinleştir (Tarayıcı kısıtlamaları için)
 document.addEventListener('click', () => {
   syncMusicState();
 }, { once: true });
 
+// Sayfa yüklendiğinde başlat
 window.addEventListener("DOMContentLoaded", () => {
   updateLanguage();
   showSection("about");
   renderSkills();
-  // Initialize UI immediately
+  // UI'yi hemen başlat
   syncMusicState();
 });

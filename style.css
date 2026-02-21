@@ -24,7 +24,7 @@ body {
   display: none !important;
 }
 
-/* HEADER */
+/* ÜST BİLGİ ALANI */
 header {
   display: flex;
   justify-content: space-between;
@@ -51,15 +51,13 @@ header {
   flex-shrink: 0;
 }
 
-
-
-/* Top-right toggle container */
+/* Sağ üst geçiş anahtarları kapsayıcısı */
 .header-right {
   display: flex;
   gap: 15px;
 }
 
-/* Pill slider */
+/* Hap şeklinde kaydırıcı */
 .pill-toggle {
   width: 64px;
   height: 34px;
@@ -85,7 +83,7 @@ header {
   user-select: none;
 }
 
-/* Knob */
+/* Anahtar topuzu */
 .pill-knob {
   width: 30px;
   height: 30px;
@@ -100,7 +98,7 @@ header {
     0 6px 12px rgba(0, 0, 0, 0.18);
 }
 
-/* ON state */
+/* AÇIK durumu */
 .pill-toggle.active {
   background: #4cd964;
 }
@@ -109,7 +107,7 @@ header {
   transform: translateX(30px);
 }
 
-/* Optional color */
+/* İsteğe bağlı mavi renk */
 .pill-toggle.blue.active {
   background: #4aa3d0;
 }
@@ -118,7 +116,7 @@ header {
   opacity: 1;
 }
 
-/* Flag Switcher */
+/* Bayrak Değiştirici */
 .flag-switch {
   display: flex;
   position: relative;
@@ -129,9 +127,9 @@ header {
   cursor: pointer;
   transition: background 0.3s, box-shadow 0.3s;
   width: 130px;
-  /* Increased for SVGs */
+  /* SVG'ler için artırıldı */
   height: 38px;
-  /* Slightly taller */
+  /* Biraz daha yüksek */
   user-select: none;
 }
 
@@ -168,7 +166,7 @@ body.dark .flag-slider {
   justify-content: center;
   gap: 6px;
   font-size: 11px;
-  /* Smaller font to fit SVGs */
+  /* SVG'lerin sığması için daha küçük yazı tipi */
   font-weight: 800;
   color: #666;
   z-index: 2;
@@ -195,9 +193,7 @@ body.dark .flag-switch.is-tr .flag-label.tr {
   color: #fff;
 }
 
-
-
-/* NAV */
+/* NAVİGASYON */
 nav {
   background: var(--nav);
   padding: 10px;
@@ -207,17 +203,14 @@ nav {
 
 nav button {
   background: rgba(255, 255, 255, 0.08);
-  /* subtle surface */
+  /* hafif yüzey */
   border: none;
   color: white;
   margin: 0 8px;
   padding: 8px 14px;
   border-radius: 999px;
   cursor: pointer;
-
-  box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.35);
-
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
   transition:
     background 0.2s ease,
     box-shadow 0.2s ease,
@@ -226,24 +219,21 @@ nav button {
 
 nav button:hover {
   background: rgba(255, 255, 255, 0.14);
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
   transform: translateY(-1px);
 }
 
 nav button:active {
   transform: translateY(0);
-  box-shadow:
-    0 2px 5px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
 }
 
-/* CONTENT */
+/* İÇERİK */
 main {
   padding: 40px;
 }
 
-/* Section animation */
-/* ===== Section container fix ===== */
+/* Bölüm animasyonu */
 .section {
   display: none;
   opacity: 0;
@@ -277,9 +267,7 @@ main {
   transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
 
-
-
-/* Responsive: stack vertically, center text on small screens */
+/* Duyarlı tasarım: Küçük ekranlarda dikey hizalama ve metni ortalama */
 @media (max-width: 768px) {
   .section .section-container {
     flex-direction: column;
@@ -303,15 +291,12 @@ main {
   }
 }
 
-
-/* Make About section fill viewport */
+/* Hakkımda bölümünün ekranı doldurmasını sağla */
 #about {
   min-height: 100vh;
   padding: 0 40px;
   box-sizing: border-box;
 }
-
-
 
 .about-container {
   display: flex;
@@ -322,7 +307,7 @@ main {
   width: 100%;
 }
 
-/* Profile picture */
+/* Profil resmi */
 .about-pic {
   flex: 1;
   display: flex;
@@ -334,15 +319,12 @@ main {
 .about-pic img {
   width: 100%;
   max-width: 250px;
-  /* limit image width */
   height: auto;
-  /* maintain aspect ratio */
   border-radius: 10px;
   object-fit: cover;
 }
 
-
-/* Text on the right */
+/* Sağ taraftaki metin */
 .about-text {
   flex: 2;
   font-size: 1.3rem;
@@ -350,7 +332,7 @@ main {
   overflow-y: auto;
 }
 
-/* Responsive About */
+/* Duyarlı Hakkımda */
 @media (max-width: 768px) {
 
   #about,
@@ -370,9 +352,8 @@ main {
   }
 }
 
-/* Projects section: normal flow, stacked content */
+/* Projeler bölümü */
 #projects {
-
   padding: 60px 40px;
   min-height: 70vh;
   box-sizing: border-box;
@@ -399,7 +380,7 @@ main {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Zig-zag flip */
+/* Zig-zag yerleşim */
 .project-row:nth-child(even) {
   direction: rtl;
 }
@@ -413,7 +394,7 @@ main {
   line-height: 1.6;
 }
 
-/* Mobile: stack */
+/* Mobil: dikey yerleşim */
 @media (max-width: 768px) {
   .project-row {
     grid-template-columns: 1fr;
@@ -429,25 +410,18 @@ main {
   }
 }
 
-
-/* Skills section: you can customize individually */
+/* Yetenekler bölümü */
 #skills {
-
   padding: 60px 40px;
 }
 
-/* ============================= */
-/*           SKILLS              */
-/* ============================= */
-
+/* YETENEKLER IZGARASI */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  /* flexible columns */
   gap: 25px;
   margin-top: 40px;
   max-width: 1200px;
-  /* prevents grid from stretching too much */
   margin-left: auto;
   margin-right: auto;
 }
@@ -456,9 +430,7 @@ main {
   position: relative;
   width: 100%;
   max-width: 180px;
-  /* max size of each card */
   aspect-ratio: 1/1;
-  /* keeps it square */
   background: var(--card);
   border-radius: 14px;
   display: flex;
@@ -481,16 +453,7 @@ main {
   transform: translateY(-4px);
 }
 
-/* Logo */
-.skill-item img {
-  width: 70%;
-  /* logo fills 70% of card */
-  height: 70%;
-  object-fit: contain;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Hover overlay */
+/* Üzerine gelme efektli metin */
 .skill-overlay {
   position: absolute;
   inset: 0;
@@ -516,7 +479,7 @@ main {
   opacity: 1;
 }
 
-/* Disclaimer text */
+/* Sorumluluk reddi metni */
 .skills-note {
   margin-top: 40px;
   text-align: center;
@@ -524,33 +487,11 @@ main {
   opacity: 0.7;
 }
 
-
-/* Repeat for hobbies, references, certificates, contact */
-#hobbies {
-  padding: 60px 40px;
-  min-height: 70vh;
-  box-sizing: border-box;
-}
-
-/* Repeat for hobbies, references, certificates, contact */
-#references {
-
-  padding: 60px 40px;
-  min-height: 70vh;
-  box-sizing: border-box;
-}
-
-/* Repeat for hobbies, references, certificates, contact */
-#certificates {
-
-  padding: 60px 40px;
-  min-height: 70vh;
-  box-sizing: border-box;
-}
-
-/* Repeat for hobbies, references, certificates, contact */
+/* Diğer bölümler */
+#hobbies,
+#references,
+#certificates,
 #contact {
-
   padding: 60px 40px;
   min-height: 70vh;
   box-sizing: border-box;
@@ -642,7 +583,7 @@ main {
   text-decoration: underline;
 }
 
-/* CERTIFICATES */
+/* SERTİFİKALAR */
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -671,7 +612,7 @@ main {
 .cert-header {
   display: flex;
   justify-content: flex-end;
-  /* Date to the right */
+  /* Tarih sağa yansın */
   align-items: center;
   margin-bottom: 5px;
 }
@@ -757,7 +698,6 @@ body.dark .cert-link {
   line-height: 1.4;
   color: var(--text);
   opacity: 1;
-  /* More visible */
 }
 
 .hobbies-list li::before {
