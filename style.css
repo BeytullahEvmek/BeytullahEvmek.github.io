@@ -1,4 +1,3 @@
-
 :root {
   --bg: #f6f6f6;
   --text: #222;
@@ -7,9 +6,9 @@
 }
 
 body.dark {
-  --bg: #121212;
+  --bg: #0a0a0a;
   --text: #eaeaea;
-  --card: #1e1e1e;
+  --card: #161616;
   --nav: #000;
 }
 
@@ -21,6 +20,10 @@ body {
   transition: background 0.4s, color 0.4s;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 /* HEADER */
 header {
   display: flex;
@@ -28,8 +31,8 @@ header {
   align-items: center;
   background: var(--card);
   padding: 30px 40px;
-  transition: background 0.4s;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .header-left {
@@ -37,9 +40,18 @@ header {
 }
 
 #occupation {
-  cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: default;
 }
+
+#occupation svg {
+  flex-shrink: 0;
+}
+
+
 
 /* Top-right toggle container */
 .header-right {
@@ -84,8 +96,8 @@ header {
   left: 2px;
   transition: transform 0.3s ease;
   box-shadow:
-    0 2px 4px rgba(0,0,0,0.25),
-    0 6px 12px rgba(0,0,0,0.18);
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 6px 12px rgba(0, 0, 0, 0.18);
 }
 
 /* ON state */
@@ -101,19 +113,101 @@ header {
 .pill-toggle.blue.active {
   background: #4aa3d0;
 }
+
 .toggle-group:hover .toggle-icon {
   opacity: 1;
 }
+
+/* Flag Switcher */
+.flag-switch {
+  display: flex;
+  position: relative;
+  background: #e6e6e6;
+  border-radius: 34px;
+  padding: 3px;
+  box-shadow: inset 0 0 0 1px #ccc;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  width: 130px;
+  /* Increased for SVGs */
+  height: 38px;
+  /* Slightly taller */
+  user-select: none;
+}
+
+body.dark .flag-switch {
+  background: #333;
+  box-shadow: inset 0 0 0 1px #444;
+}
+
+.flag-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  height: calc(100% - 6px);
+  background: #ffffff;
+  border-radius: 30px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+body.dark .flag-slider {
+  background: #555;
+}
+
+.flag-switch.is-tr .flag-slider {
+  transform: translateX(100%);
+}
+
+.flag-label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  /* Smaller font to fit SVGs */
+  font-weight: 800;
+  color: #666;
+  z-index: 2;
+  transition: color 0.3s;
+}
+
+.flag-label svg {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 2px;
+}
+
+body.dark .flag-label {
+  color: #aaa;
+}
+
+.flag-switch:not(.is-tr) .flag-label.en,
+.flag-switch.is-tr .flag-label.tr {
+  color: #000;
+}
+
+body.dark .flag-switch:not(.is-tr) .flag-label.en,
+body.dark .flag-switch.is-tr .flag-label.tr {
+  color: #fff;
+}
+
+
 
 /* NAV */
 nav {
   background: var(--nav);
   padding: 10px;
   text-align: center;
+  transition: background 0.4s ease;
 }
 
 nav button {
-  background: rgba(255, 255, 255, 0.08); /* subtle surface */
+  background: rgba(255, 255, 255, 0.08);
+  /* subtle surface */
   border: none;
   color: white;
   margin: 0 8px;
@@ -167,17 +261,20 @@ main {
     transform: translateY(0);
   }
 }
+
 .section-title {
   font-size: 2rem;
   margin-bottom: 30px;
   border-bottom: 2px solid var(--text);
   display: inline-block;
 }
+
 .section-text {
   background: var(--card);
   padding: 25px;
   border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
 
 
@@ -188,15 +285,18 @@ main {
     flex-direction: column;
     align-items: center;
   }
+
   .section .section-text {
     text-align: center;
   }
 }
+
 @keyframes fadeSlide {
   from {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -233,8 +333,10 @@ main {
 
 .about-pic img {
   width: 100%;
-  max-width: 250px; /* limit image width */
-  height: auto;     /* maintain aspect ratio */
+  max-width: 250px;
+  /* limit image width */
+  height: auto;
+  /* maintain aspect ratio */
   border-radius: 10px;
   object-fit: cover;
 }
@@ -250,7 +352,9 @@ main {
 
 /* Responsive About */
 @media (max-width: 768px) {
-  #about, .about-container {
+
+  #about,
+  .about-container {
     flex-direction: column;
     height: auto;
   }
@@ -292,7 +396,7 @@ main {
   width: 100%;
   max-width: 420px;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* Zig-zag flip */
@@ -338,10 +442,12 @@ main {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* flexible columns */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  /* flexible columns */
   gap: 25px;
   margin-top: 40px;
-  max-width: 1200px; /* prevents grid from stretching too much */
+  max-width: 1200px;
+  /* prevents grid from stretching too much */
   margin-left: auto;
   margin-right: auto;
 }
@@ -349,17 +455,19 @@ main {
 .skill-item {
   position: relative;
   width: 100%;
-  max-width: 180px;   /* max size of each card */
-  aspect-ratio: 1/1;  /* keeps it square */
+  max-width: 180px;
+  /* max size of each card */
+  aspect-ratio: 1/1;
+  /* keeps it square */
   background: var(--card);
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, background 0.4s ease, box-shadow 0.4s ease;
 }
 
 .skill-item img {
@@ -375,7 +483,8 @@ main {
 
 /* Logo */
 .skill-item img {
-  width: 70%;        /* logo fills 70% of card */
+  width: 70%;
+  /* logo fills 70% of card */
   height: 70%;
   object-fit: contain;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -385,7 +494,7 @@ main {
 .skill-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -417,32 +526,36 @@ main {
 
 
 /* Repeat for hobbies, references, certificates, contact */
-#hobbies{
+#hobbies {
   padding: 60px 40px;
   min-height: 70vh;
   box-sizing: border-box;
 }
+
 /* Repeat for hobbies, references, certificates, contact */
-#references{
+#references {
 
   padding: 60px 40px;
   min-height: 70vh;
   box-sizing: border-box;
 }
+
 /* Repeat for hobbies, references, certificates, contact */
-#certificates{
+#certificates {
 
   padding: 60px 40px;
   min-height: 70vh;
   box-sizing: border-box;
 }
+
 /* Repeat for hobbies, references, certificates, contact */
-#contact{
+#contact {
 
   padding: 60px 40px;
   min-height: 70vh;
   box-sizing: border-box;
 }
+
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -458,13 +571,13 @@ main {
   background-color: var(--card);
   padding: 15px;
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.4s ease;
 }
 
 .contact-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .contact-icon {
@@ -485,6 +598,177 @@ main {
   word-break: break-word;
 }
 
+.references-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.reference-item {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, background 0.4s ease;
+}
+
+.reference-item:hover {
+  transform: translateY(-5px);
+}
+
+.ref-name {
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.ref-title {
+  font-size: 1rem;
+  color: var(--text);
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.ref-email {
+  color: #4cd964;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.ref-email:hover {
+  text-decoration: underline;
+}
+
+/* CERTIFICATES */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.cert-card {
+  background: var(--card);
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.cert-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(76, 217, 100, 0.15);
+  border-color: #4cd964;
+}
+
+.cert-header {
+  display: flex;
+  justify-content: flex-end;
+  /* Date to the right */
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.cert-date {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  font-weight: 600;
+}
+
+.cert-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.cert-issuer {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.cert-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.cert-link {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cert-verify-link {
+  color: #4cd964;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.cert-verify-link:hover {
+  text-decoration: underline;
+}
+
+body.dark .cert-link {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cert-link:hover {
+  background: #4cd964;
+  color: white;
+}
+
 .contact-info:hover {
   text-decoration: underline;
+}
+
+.hobbies-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hobbies-list li {
+  position: relative;
+  padding-left: 35px;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: var(--text);
+  opacity: 1;
+  /* More visible */
+}
+
+.hobbies-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #4cd964;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+body.dark .hobbies-list li::before {
+  color: #4cd964;
 }
