@@ -19,9 +19,11 @@ function showSection(id) {
 function updateLanguage() {
   const occ = document.getElementById("occupation");
   if (occ) {
-    occ.innerHTML = language === "en"
-      ? `${FLAG_EN} Computer Engineer ${FLAG_TR}`
-      : `${FLAG_EN} Bilgisayar Mühendisi ${FLAG_TR}`;
+    if (language === "en") {
+      occ.innerHTML = FLAG_EN + " Computer Engineer " + FLAG_TR;
+    } else {
+      occ.innerHTML = FLAG_EN + " Bilgisayar Mühendisi " + FLAG_TR;
+    }
   }
 
   document.querySelectorAll(".lang-en").forEach(el => {
@@ -122,8 +124,9 @@ function renderSkills() {
 /* Music (YouTube API) */
 const videoIds = ["GpOHXDO-mQk", "-Jd4EP9OUmc", "xz61v-lss5g", "RKQUblO-iCs", "xhcukDSkxYM", "1AKkLEoixkw"];
 let player;
-let isYTReady = false;
-let musicAttempted = false;
+let playerReady = false;
+let userInteracted = false;
+let musicStarted = false;
 
 window.onYouTubeIframeAPIReady = function () {
   const randomId = videoIds[Math.floor(Math.random() * videoIds.length)];
@@ -139,9 +142,9 @@ window.onYouTubeIframeAPIReady = function () {
     },
     events: {
       'onReady': (event) => {
-        isYTReady = true;
+        playerReady = true;
         event.target.setVolume(25);
-        event.target.playVideo();
+        checkAndStartMusic();
       },
       'onStateChange': (event) => {
         const musicBtn = document.querySelector('.pill-toggle.blue');
@@ -157,30 +160,39 @@ window.onYouTubeIframeAPIReady = function () {
   });
 };
 
+function checkAndStartMusic() {
+  if (playerReady && userInteracted && !musicStarted) {
+    const pref = localStorage.getItem('musicEnabled');
+    if (pref !== 'false') {
+      player.unMute();
+      player.playVideo();
+      musicStarted = true;
+      localStorage.setItem('musicEnabled', 'true');
+    }
+  }
+}
+
 function toggleMusic(el) {
   if (!player || typeof player.getPlayerState !== 'function') return;
   const state = player.getPlayerState();
-  if (state === 1) {
+  if (state === 1) { // Playing
     player.pauseVideo();
     localStorage.setItem('musicEnabled', 'false');
   } else {
     player.unMute();
     player.playVideo();
     localStorage.setItem('musicEnabled', 'true');
+    musicStarted = true; // Mark as started if manual toggle used
   }
 }
 
+// Any click enables audio context
 document.addEventListener('click', () => {
-  const pref = localStorage.getItem('musicEnabled');
-  if (pref !== 'false') {
-    if (player && typeof player.playVideo === 'function' && !musicAttempted) {
-      player.unMute();
-      player.playVideo();
-      musicAttempted = true;
-      localStorage.setItem('musicEnabled', 'true');
-    }
+  if (!userInteracted) {
+    userInteracted = true;
+    checkAndStartMusic();
   }
-}, { once: true });
+}, { passive: true });
 
 window.addEventListener("DOMContentLoaded", () => {
   updateLanguage();
