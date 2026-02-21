@@ -8,20 +8,20 @@ function showSection(id) {
   document.querySelectorAll(".section").forEach(sec =>
     sec.classList.remove("active")
   );
-  document.getElementById(id)?.classList.add("active");
+  const target = document.getElementById(id);
+  if (target) target.classList.add("active");
 
   document.querySelectorAll("nav button").forEach(btn =>
     btn.classList.toggle("active", btn.dataset.target === id)
   );
 }
 
-
 function updateLanguage() {
   const occ = document.getElementById("occupation");
   if (occ) {
     occ.innerHTML = language === "en"
-      ? `${FLAG_EN} Computer Engineer ${FLAG_TR}`
-      : `${FLAG_EN} Bilgisayar Mühendisi ${FLAG_TR}`;
+      ? `${FLAG_EN} Computer Engineer`
+      : `${FLAG_TR} Bilgisayar Mühendisi`;
   }
 
   document.querySelectorAll(".lang-en").forEach(el => {
@@ -43,13 +43,6 @@ function updateLanguage() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  updateLanguage();
-  showSection("about");
-  renderSkills();
-});
-
-
 function setLanguage(lang) {
   if (language === lang) return;
   language = lang;
@@ -63,19 +56,18 @@ function toggleLanguage() {
   renderSkills();
 }
 
-
 /* Dark mode */
 function toggleDarkMode(el) {
   document.body.classList.toggle("dark");
   el.classList.toggle("active");
-
   const icon = el.parentElement.querySelector(".toggle-icon");
-  icon.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
+  if (icon) {
+    icon.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
+  }
 }
+
 /* Skills */
-
 const skills = [
-
   { img: "Logos (10).png", en: "Ruby", tr: "Ruby" },
   { img: "Logos (11).png", en: "C++", tr: "C++" },
   { img: "Logos (12).png", en: "C#", tr: "C#" },
@@ -104,39 +96,31 @@ const skills = [
 
 function renderSkills() {
   const grid = document.getElementById("skillsGrid");
+  if (!grid) return;
   grid.innerHTML = "";
 
   skills.forEach(skill => {
     const item = document.createElement("div");
     item.className = "skill-item";
-
     item.innerHTML = `
       <img src="resources/${skill.img}" alt="${skill.en}">
       <div class="skill-overlay">
         ${language === "en" ? skill.en : skill.tr}
       </div>
     `;
-
     grid.appendChild(item);
   });
 
-  document.getElementById("skills-note").innerText =
-    language === "en"
+  const note = document.getElementById("skills-note");
+  if (note) {
+    note.innerText = language === "en"
       ? "All logos are the property of their respective owners."
       : "Tüm logolar ilgili hak sahiplerine aittir.";
+  }
 }
 
-
 /* Music (YouTube API) */
-const videoIds = [
-  "GpOHXDO-mQk",
-  "-Jd4EP9OUmc",
-  "xz61v-lss5g",
-  "RKQUblO-iCs",
-  "xhcukDSkxYM",
-  "1AKkLEoixkw"
-];
-
+const videoIds = ["GpOHXDO-mQk", "-Jd4EP9OUmc", "xz61v-lss5g", "RKQUblO-iCs", "xhcukDSkxYM", "1AKkLEoixkw"];
 let player;
 let isYTReady = false;
 let musicAttempted = false;
@@ -175,18 +159,14 @@ window.onYouTubeIframeAPIReady = function () {
 
 function toggleMusic(el) {
   if (!player || typeof player.getPlayerState !== 'function') return;
-  const state = player.getPlayerState();
-
   if (player.isMuted()) player.unMute();
-
-  if (state === 1) { // Playing
+  if (player.getPlayerState() === 1) {
     player.pauseVideo();
   } else {
     player.playVideo();
   }
 }
 
-// Start music on first interaction
 document.addEventListener('click', () => {
   if (player && typeof player.playVideo === 'function' && !musicAttempted) {
     player.unMute();
@@ -194,3 +174,9 @@ document.addEventListener('click', () => {
     musicAttempted = true;
   }
 }, { once: true });
+
+window.addEventListener("DOMContentLoaded", () => {
+  updateLanguage();
+  showSection("about");
+  renderSkills();
+});
