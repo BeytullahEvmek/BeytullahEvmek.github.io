@@ -8,8 +8,7 @@ function showSection(id) {
   document.querySelectorAll(".section").forEach(sec =>
     sec.classList.remove("active")
   );
-  const target = document.getElementById(id);
-  if (target) target.classList.add("active");
+  document.getElementById(id)?.classList.add("active");
 
   document.querySelectorAll("nav button").forEach(btn =>
     btn.classList.toggle("active", btn.dataset.target === id)
@@ -19,37 +18,22 @@ function showSection(id) {
 function updateLanguage() {
   const occ = document.getElementById("occupation");
   if (occ) {
-    if (language === "en") {
-      occ.innerHTML = FLAG_EN + " Computer Engineer " + FLAG_TR;
-    } else {
-      occ.innerHTML = FLAG_EN + " Bilgisayar Mühendisi " + FLAG_TR;
-    }
+    occ.innerHTML = (language === "en")
+      ? `${FLAG_EN} Computer Engineer ${FLAG_TR}`
+      : `${FLAG_EN} Bilgisayar Mühendisi ${FLAG_TR}`;
   }
 
-  document.querySelectorAll(".lang-en").forEach(el => {
-    el.hidden = language !== "en";
-  });
+  document.querySelectorAll(".lang-en").forEach(el => el.hidden = (language !== "en"));
+  document.querySelectorAll(".lang-tr").forEach(el => el.hidden = (language !== "tr"));
 
-  document.querySelectorAll(".lang-tr").forEach(el => {
-    el.hidden = language !== "tr";
-  });
-
-  // Update switcher UI
   const switcher = document.querySelector(".flag-switch");
   if (switcher) {
     switcher.classList.toggle("is-tr", language === "tr");
-    const enLabel = switcher.querySelector(".flag-label.en");
-    const trLabel = switcher.querySelector(".flag-label.tr");
-    if (enLabel) enLabel.innerHTML = `${FLAG_EN} EN`;
-    if (trLabel) trLabel.innerHTML = `${FLAG_TR} TR`;
+    const enL = switcher.querySelector(".flag-label.en");
+    const trL = switcher.querySelector(".flag-label.tr");
+    if (enL) enL.innerHTML = `${FLAG_EN} EN`;
+    if (trL) trL.innerHTML = `${FLAG_TR} TR`;
   }
-}
-
-function setLanguage(lang) {
-  if (language === lang) return;
-  language = lang;
-  updateLanguage();
-  renderSkills();
 }
 
 function toggleLanguage() {
@@ -58,17 +42,13 @@ function toggleLanguage() {
   renderSkills();
 }
 
-/* Dark mode */
 function toggleDarkMode(el) {
   document.body.classList.toggle("dark");
   el.classList.toggle("active");
   const icon = el.parentElement.querySelector(".toggle-icon");
-  if (icon) {
-    icon.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
-  }
+  if (icon) icon.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
 }
 
-/* Skills */
 const skills = [
   { img: "Logos (10).png", en: "Ruby", tr: "Ruby" },
   { img: "Logos (11).png", en: "C++", tr: "C++" },
@@ -100,99 +80,68 @@ function renderSkills() {
   const grid = document.getElementById("skillsGrid");
   if (!grid) return;
   grid.innerHTML = "";
-
   skills.forEach(skill => {
     const item = document.createElement("div");
     item.className = "skill-item";
-    item.innerHTML = `
-      <img src="resources/${skill.img}" alt="${skill.en}">
-      <div class="skill-overlay">
-        ${language === "en" ? skill.en : skill.tr}
-      </div>
-    `;
+    item.innerHTML = `<img src="resources/${skill.img}" alt="${skill.en}"><div class="skill-overlay">${language === "en" ? skill.en : skill.tr}</div>`;
     grid.appendChild(item);
   });
-
   const note = document.getElementById("skills-note");
-  if (note) {
-    note.innerText = language === "en"
-      ? "All logos are the property of their respective owners."
-      : "Tüm logolar ilgili hak sahiplerine aittir.";
-  }
+  if (note) note.innerText = (language === "en") ? "All logos are the property of their respective owners." : "Tüm logolar ilgili hak sahiplerine aittir.";
 }
 
-/* Music (YouTube API) */
+/* MUSIC SYSTEM */
 const videoIds = ["GpOHXDO-mQk", "-Jd4EP9OUmc", "xz61v-lss5g", "RKQUblO-iCs", "xhcukDSkxYM", "1AKkLEoixkw"];
 let player;
 let playerReady = false;
-let userInteracted = false;
-let musicStarted = false;
+
+// Load API
+(function () {
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
+})();
 
 window.onYouTubeIframeAPIReady = function () {
   const randomId = videoIds[Math.floor(Math.random() * videoIds.length)];
   player = new YT.Player('youtube-player', {
     videoId: randomId,
-    playerVars: {
-      'autoplay': 1,
-      'mute': 1,
-      'controls': 0,
-      'loop': 1,
-      'playlist': randomId,
-      'enablejsapi': 1
-    },
+    playerVars: { 'autoplay': 1, 'mute': 1, 'controls': 0, 'loop': 1, 'playlist': randomId, 'enablejsapi': 1 },
     events: {
-      'onReady': (event) => {
+      'onReady': () => {
         playerReady = true;
-        event.target.setVolume(25);
-        checkAndStartMusic();
+        player.setVolume(30);
+        // Attempt immediate muted play
+        player.playVideo();
       },
-      'onStateChange': (event) => {
-        const musicBtn = document.querySelector('.pill-toggle.blue');
-        if (event.data === 1) { // Playing
-          musicPlaying = true;
-          musicBtn?.classList.add('active');
-        } else {
-          musicPlaying = false;
-          musicBtn?.classList.remove('active');
-        }
+      'onStateChange': (e) => {
+        const btn = document.querySelector('.pill-toggle.blue');
+        if (e.data === 1) btn?.classList.add('active');
+        else btn?.classList.remove('active');
       }
     }
   });
 };
 
-function checkAndStartMusic() {
-  if (playerReady && userInteracted && !musicStarted) {
-    const pref = localStorage.getItem('musicEnabled');
-    if (pref !== 'false') {
-      player.unMute();
-      player.playVideo();
-      musicStarted = true;
-      localStorage.setItem('musicEnabled', 'true');
-    }
-  }
-}
-
 function toggleMusic(el) {
-  if (!player || typeof player.getPlayerState !== 'function') return;
-  const state = player.getPlayerState();
-  if (state === 1) { // Playing
+  if (!playerReady) return;
+  if (player.getPlayerState() === 1) {
     player.pauseVideo();
-    localStorage.setItem('musicEnabled', 'false');
+    localStorage.setItem('musicOff', 'true');
   } else {
     player.unMute();
     player.playVideo();
-    localStorage.setItem('musicEnabled', 'true');
-    musicStarted = true; // Mark as started if manual toggle used
+    localStorage.setItem('musicOff', 'false');
   }
 }
 
-// Any click enables audio context
+// Global click to UNMUTE if preference allows
 document.addEventListener('click', () => {
-  if (!userInteracted) {
-    userInteracted = true;
-    checkAndStartMusic();
+  if (playerReady && localStorage.getItem('musicOff') !== 'true') {
+    player.unMute();
+    player.playVideo();
   }
-}, { passive: true });
+}, { once: true });
 
 window.addEventListener("DOMContentLoaded", () => {
   updateLanguage();
