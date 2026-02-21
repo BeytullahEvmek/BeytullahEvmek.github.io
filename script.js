@@ -5,14 +5,9 @@ const FLAG_EN = `<svg style="width:1.2em; height:1.2em; vertical-align:middle; b
 const FLAG_TR = `<svg style="width:1.2em; height:1.2em; vertical-align:middle; border-radius:2px" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="#e30a17"/><circle cx="425" cy="400" r="200" fill="#fff"/><circle cx="475" cy="400" r="160" fill="#e30a17"/><path fill="#fff" d="M675 400l-123.6 40.2 47.2-130.4v180.4l-47.2-130.4z"/></svg>`;
 
 function showSection(id) {
-  document.querySelectorAll(".section").forEach(sec =>
-    sec.classList.remove("active")
-  );
+  document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
   document.getElementById(id)?.classList.add("active");
-
-  document.querySelectorAll("nav button").forEach(btn =>
-    btn.classList.toggle("active", btn.dataset.target === id)
-  );
+  document.querySelectorAll("nav button").forEach(btn => btn.classList.toggle("active", btn.dataset.target === id));
 }
 
 function updateLanguage() {
@@ -22,18 +17,8 @@ function updateLanguage() {
       ? `${FLAG_EN} Computer Engineer ${FLAG_TR}`
       : `${FLAG_EN} Bilgisayar Mühendisi ${FLAG_TR}`;
   }
-
   document.querySelectorAll(".lang-en").forEach(el => el.hidden = (language !== "en"));
   document.querySelectorAll(".lang-tr").forEach(el => el.hidden = (language !== "tr"));
-
-  const switcher = document.querySelector(".flag-switch");
-  if (switcher) {
-    switcher.classList.toggle("is-tr", language === "tr");
-    const enL = switcher.querySelector(".flag-label.en");
-    const trL = switcher.querySelector(".flag-label.tr");
-    if (enL) enL.innerHTML = `${FLAG_EN} EN`;
-    if (trL) trL.innerHTML = `${FLAG_TR} TR`;
-  }
 }
 
 function toggleLanguage() {
@@ -86,33 +71,22 @@ function renderSkills() {
     item.innerHTML = `<img src="resources/${skill.img}" alt="${skill.en}"><div class="skill-overlay">${language === "en" ? skill.en : skill.tr}</div>`;
     grid.appendChild(item);
   });
-  const note = document.getElementById("skills-note");
-  if (note) note.innerText = (language === "en") ? "All logos are the property of their respective owners." : "Tüm logolar ilgili hak sahiplerine aittir.";
 }
 
 /* MUSIC SYSTEM */
-const videoIds = ["GpOHXDO-mQk", "-Jd4EP9OUmc", "xz61v-lss5g", "RKQUblO-iCs", "xhcukDSkxYM", "1AKkLEoixkw"];
 let player;
 let playerReady = false;
-
-// Load API
-(function () {
-  const tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.body.appendChild(tag);
-})();
+const videoIds = ["GpOHXDO-mQk", "-Jd4EP9OUmc", "xz61v-lss5g", "RKQUblO-iCs", "xhcukDSkxYM", "1AKkLEoixkw"];
 
 window.onYouTubeIframeAPIReady = function () {
   const randomId = videoIds[Math.floor(Math.random() * videoIds.length)];
   player = new YT.Player('youtube-player', {
     videoId: randomId,
-    playerVars: { 'autoplay': 1, 'mute': 1, 'controls': 0, 'loop': 1, 'playlist': randomId, 'enablejsapi': 1 },
+    playerVars: { 'autoplay': 1, 'mute': 1, 'controls': 0, 'loop': 1, 'playlist': randomId },
     events: {
       'onReady': () => {
         playerReady = true;
         player.setVolume(30);
-        // Attempt immediate muted play
-        player.playVideo();
       },
       'onStateChange': (e) => {
         const btn = document.querySelector('.pill-toggle.blue');
@@ -127,17 +101,17 @@ function toggleMusic(el) {
   if (!playerReady) return;
   if (player.getPlayerState() === 1) {
     player.pauseVideo();
-    localStorage.setItem('musicOff', 'true');
+    localStorage.setItem('musicPaused', 'true');
   } else {
     player.unMute();
     player.playVideo();
-    localStorage.setItem('musicOff', 'false');
+    localStorage.setItem('musicPaused', 'false');
   }
 }
 
 // Global click to UNMUTE if preference allows
 document.addEventListener('click', () => {
-  if (playerReady && localStorage.getItem('musicOff') !== 'true') {
+  if (playerReady && localStorage.getItem('musicPaused') !== 'true') {
     player.unMute();
     player.playVideo();
   }
