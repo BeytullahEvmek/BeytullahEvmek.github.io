@@ -73,20 +73,31 @@ function renderSkills() {
   });
 }
 
-/* MUSIC SYSTEM */
+/* MUSIC SYSTEM - ULTRA STABLE VERSION */
 let player;
-let playerReady = false;
 const videoIds = ["GpOHXDO-mQk", "-Jd4EP9OUmc", "xz61v-lss5g", "RKQUblO-iCs", "xhcukDSkxYM", "1AKkLEoixkw"];
 
+// 1. Define the callback FIRST
 window.onYouTubeIframeAPIReady = function () {
   const randomId = videoIds[Math.floor(Math.random() * videoIds.length)];
   player = new YT.Player('youtube-player', {
     videoId: randomId,
-    playerVars: { 'autoplay': 1, 'mute': 1, 'controls': 0, 'loop': 1, 'playlist': randomId },
+    playerVars: {
+      'autoplay': 1,
+      'mute': 1,
+      'controls': 0,
+      'loop': 1,
+      'playlist': randomId,
+      'enablejsapi': 1
+    },
     events: {
-      'onReady': () => {
-        playerReady = true;
-        player.setVolume(30);
+      'onReady': (e) => {
+        e.target.setVolume(30);
+        e.target.playVideo();
+        // If user already clicked or music was ON, unmute
+        if (localStorage.getItem('musicActive') === 'true') {
+          unmutePlayer();
+        }
       },
       'onStateChange': (e) => {
         const btn = document.querySelector('.pill-toggle.blue');
@@ -97,23 +108,38 @@ window.onYouTubeIframeAPIReady = function () {
   });
 };
 
-function toggleMusic(el) {
-  if (!playerReady) return;
-  if (player.getPlayerState() === 1) {
-    player.pauseVideo();
-    localStorage.setItem('musicPaused', 'true');
-  } else {
+// 2. Load the script SECOND (Guarantees onYouTubeIframeAPIReady exists)
+(function loadYTAPI() {
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+})();
+
+function unmutePlayer() {
+  if (player && typeof player.unMute === 'function') {
     player.unMute();
     player.playVideo();
-    localStorage.setItem('musicPaused', 'false');
+    localStorage.setItem('musicActive', 'true');
+  }
+}
+
+function toggleMusic(el) {
+  if (!player || typeof player.getPlayerState !== 'function') return;
+  if (player.getPlayerState() === 1 && !player.isMuted()) {
+    player.pauseVideo();
+    player.mute();
+    localStorage.setItem('musicActive', 'false');
+  } else {
+    unmutePlayer();
   }
 }
 
 // Global click to UNMUTE if preference allows
 document.addEventListener('click', () => {
-  if (playerReady && localStorage.getItem('musicPaused') !== 'true') {
-    player.unMute();
-    player.playVideo();
+  // If user hasn't explicitly muted it, start the music on first click
+  if (localStorage.getItem('musicActive') !== 'false') {
+    unmutePlayer();
   }
 }, { once: true });
 
