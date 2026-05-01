@@ -26,6 +26,8 @@ function updateLanguage() {
 // Dili değiştir (TR/EN)
 function toggleLanguage() {
   language = (language === "en") ? "tr" : "en";
+    const swi = document.querySelector('.flag-switch');
+  swi.classList.toggle('is-tr');
   updateLanguage();
   renderSkills();
 }
