@@ -125,6 +125,8 @@ header {
   padding: 3px;
   box-shadow: inset 0 0 0 1px #ccc;
   cursor: pointer;
+  overflow: hidden;
+  padding: 0;
   transition: background 0.3s, box-shadow 0.3s;
   width: 130px;
   /* SVG'ler için artırıldı */
@@ -140,10 +142,10 @@ body.dark .flag-switch {
 
 .flag-slider {
   position: absolute;
-  top: 3px;
-  left: 3px;
-  width: calc(50% - 3px);
-  height: calc(100% - 6px);
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
   background: #ffffff;
   border-radius: 30px;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -156,7 +158,7 @@ body.dark .flag-slider {
 }
 
 .flag-switch.is-tr .flag-slider {
-  transform: translateX(100% + 3px);
+  transform: translateX(100%);
 }
 
 .flag-label {
